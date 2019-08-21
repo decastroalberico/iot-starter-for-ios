@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html style="" class="applicationcache geolocation history postmessage svg websockets localstorage sessionstorage no-websqldatabase webworkers hashchange pointerevents canvas audio canvastext video webgl cssgradients multiplebgs opacity rgba inlinesvg hsla supports svgclippaths smil no-touchevents fontface generatedcontent textshadow cssanimations backgroundsize borderimage borderradius boxshadow csscolumns csscolumns-width no-csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth no-csscolumns-breakbefore no-csscolumns-breakafter no-csscolumns-breakinside flexbox flexboxlegacy no-cssreflections csstransforms csstransforms3d csstransitions indexeddb indexeddb-deletedatabase js ibm-v18 ibm-cxtype-na no-hires mac firefox firefox6 gecko gecko6 ibm-grid-xlarge latin-america-imt" lang="pt-BR"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">	
+<meta name="viewport" content="width=device-width, initial-scale=1">      
+<link rel="icon" href="https://www.ibm.com/favicon.ico">
+<link rel="canonical" href="http://www.ibm.com/developerworks/br/library/iot-smartphone-sensor-actuator-bluemix-apps-trs/index.html">
+<meta name="geo.country" content="BR">
+<meta name="dcterms.rights" content="© Copyright&nbsp;IBM Corporation&nbsp;2016">
+<meta name="dcterms.date" content="2016-12-26">
+<meta name="description" content="Neste tutorial, você aprenderá como é possível usar o Watson IoT Platform para criar uma solução IoT simples transformando seu smartphone em um sensor (lendo e enviando dados), mas também em um atuador (lendo e agindo sobre os dados).">	
+<meta name="keywords" content="IoT, sensor, actuator, device, tttiotca">
+<meta name="robots" content="index,follow">
+<title>Transforme seu smartphone em um sensor e em um atuador</title>
+    
+<script id="loadedViaBxAnalytics-HU3dbkAG5wE0F1IkRf9S1RexlAqo3jby" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/analytics.js" type="text/javascript" async=""></script><script type="text/javascript" async="" charset="utf-8" id="utag_136" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/survey.js"></script><script type="text/javascript" async="" charset="utf-8" id="utag_19" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/hotjar-42920.js"></script><script type="text/javascript" async="" charset="utf-8" id="utag_53" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/js.js"></script><script type="text/javascript" async="" charset="utf-8" id="tealium_cormetrics2" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/eluminate.js"></script><script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/bluemix-analytics.js" type="application/javascript" async=""></script><script type="text/javascript" async="" charset="utf-8" id="dle_api_6895631df6f11318710748700fa99017cb7e8560268cae96bbdbb8884aa3ff43" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/p_6895631df6f11318710748700fa99017cb7e8560268cae96bbdbb8884aa.js"></script><script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/p_devwrks.js" type="application/javascript" async=""></script><script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/callback_dl.callback" type="application/javascript" async=""></script><script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/utag_005.js" type="application/javascript" async=""></script><script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/dbdm-data.js" type="application/javascript" async=""></script><script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/p_6895631df6f11318710748700fa99017cb7e8560268cae96bbdbb8884aa.js" type="application/javascript" async=""></script><script> 
+    digitalData = {
+        "page":{
+            "category":{
+                "primaryCategory":"SOFDCIOTBR"
+            },
+            "pageInfo":{
+                "effectiveDate":"2016-12-26",
+                "language":"pt-BR",
+                "publishDate":"2016-12-26",
+                "publisher":"IBM Corporation",
+                "version":"v18",
+                "ibm":{ 
+                    "contentDelivery":"IBM developerWorks template",
+                    "contentProducer":"IBM developerWorks",
+                    "country":"BR",
+                    "owner":"Developer Works/Brazil/IBM",
+                    "siteID":"DEVWRKS",
+                    "subject":",SS4HY7,SS4HY7,ZZ000",
+                    "type":"CT316",
+                    "topic":"Devices,Sensors,actuators",
+                    "topicId":"466,1272,1300",
+                    "contentArea":"iot",
+                    "contentAreaId":"65",
+                    "contentType":"article",
+                    "contentId":"1041574",
+                    "brandProduct":",SS4HY7,SS4HY7"
+                },
+                "keywords":"IoT, sensor, actuator, device, tttiotca",
+                "description":"Neste tutorial, você aprenderá como é possível usar o Watson IoT Platform para criar uma solução IoT simples transformando seu smartphone em um sensor (lendo e enviando dados), mas também em um atuador (lendo e agindo sobre os dados)."
+            }
+        }
+    };
+    window._analytics = {
+        "coremetrics": false,
+        "optimizely": false,
+        "googleAddServices": false,
+        "addRoll": false,
+        "intercom": false,
+        "fullStory": false,
+        "hotjar": false,
+        "tealeaf": false,
+        "nps": false,
+        "segment_key": 'HU3dbkAG5wE0F1IkRf9S1RexlAqo3jby'
+    };
+</script>
+	
+    <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@developerworks">
+<meta property="og:title" content="Transforme seu smartphone e em um sensor e um atuador">
+<meta property="og:description" content="Neste tutorial, você aprenderá como é possível usar o Watson IoT Platform para criar uma solução IoT simples transformando seu smartphone em um sensor (lendo e enviando dados), mas também em um atuador (lendo e agindo sobre os dados).">
+<meta property="og:image" content="http://dw1.s81c.com/developerworks/i/twitterdw-30054-deviceiotplatform.png">
+<!-- Segment meta tag -->
+<meta name="segment" property="developerWorks (developerWorks)" producttitle="developerWorks" value="Internet of Things Portuguese (developerWorks)">      
+<!-- SITE MON : START (DO NOT DELETE) -->
+<!-- developerWorks monitoring token -->
+<!-- SITE MON : END (DO NOT DELETE) -->
+
+<!-- HEADER_SCRIPTS_AND_CSS_INCLUDE -->
+<!-- <script src="//cdn.optimizely.com/js/5399420604.js"></script> -->
+<!-- BEGIN: Use this section to set page specific variables for the Page Tag -->
+<script language="JavaScript">var NTPT_PGEXTRA="ibmSkillLevel=3&ibmCmaId=1041574&ibmContentAreas=iot";</script>
+<!--END -->
+<script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/ida_stats.js"></script><meta property="og:type" content="website"><meta property="og:url" content="http://www.ibm.com/developerworks/br/library/iot-smartphone-sensor-actuator-bluemix-apps-trs/index.html"><meta property="og:locale" content="pt_BR"><meta property="og:published_time" content="2016-12-26"><meta property="article:published_time" content="2016-12-26"><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/genppageinit.gif" width="1" height="1">
+<link href="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/www.css" rel="stylesheet">
+<link href="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/syntaxhighlighter.css" rel="stylesheet">
+<script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/www.js"></script><style></style>
+<script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/syntaxhighlighter.js"></script>    
+<link href="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/tables.css" rel="stylesheet">
+<script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/tables.js"></script>   
+<!--  Masthead/footer  -->
+<link href="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/dw-mf-v18.css" rel="stylesheet">
+<!-- <link href="//dw1.s81c.com/developerworks/css/dw-mf/v18/alt-signedin-ux.css" rel="stylesheet" /> -->   
+<!--[if lt IE 9]>
+    <link href="//dw1.s81c.com/developerworks/css/dw-mf/v18/dw-mf-ie8fix.css?v=022216" rel="stylesheet" />
+<![endif]-->
+<link href="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/dw-article.css" rel="stylesheet">
+<script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/dw-auth-properties.js"></script>
+<script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/dw-auth.js"></script>
+<script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/dw-mf.js"></script>
+<script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/dw-include.js"></script>     
+<script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/dw-article.js"></script>
+<script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/dw-auto-links.js"></script>     
+<script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/tactic.js"></script>
+<script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/tacticbindlinks.js"></script>
+
+<!-- 
+<PageMap>
+    <DataObject type="document">
+        <Attribute name="topic">Devices,Sensors,actuators</Attribute>
+        <Attribute name="topicId">466,1272,1300</Attribute>
+        <Attribute name="contentArea">iot</Attribute>
+        <Attribute name="contentAreaId">65</Attribute>
+        <Attribute name="abstract">Neste tutorial, você aprenderá como é possível usar o Watson IoT
+            Platform para criar uma solução IoT simples transformando seu smartphone em um
+            sensor (lendo e enviando dados), mas também em um atuador (lendo e agindo
+            sobre os dados).</Attribute>
+        <Attribute name="pub.date">2016-12-26</Attribute>
+        <Attribute name="contentType">article</Attribute>
+    </DataObject>
+</PageMap>
+-->        
+
+<script type="text/javascript" async="" charset="utf-8" id="utag_ibm.web_53" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/utag.js"></script><style id="ibm-masthead-hidelinks">@media screen and (max-width: 457px) { .ibm-masthead-categories,#ibm-megamenu-sections{display:none} }@media screen and (max-width: 457px) { .ibm-mh-marketplace-link{display:none} }</style><script type="text/javascript" async="" charset="utf-8" id="LOTCC_10026" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/cc.js"></script><script type="text/javascript" async="" charset="utf-8" id="utag_ibm.web_45" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/utag_003.js"></script><script type="text/javascript" async="" charset="utf-8" id="utag_ibm.web_19" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/utag_004.js"></script><script type="text/javascript" async="" charset="utf-8" id="utag_ibm.web_136" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/utag_002.js"></script><style type="text/css">@media only screen and (max-width:480px){.truste_box_overlay{width: 100%!important;margin: 0px!important;max-width: 100%!important;box-shadow: rgb(0,0,0,0.2) 0px 0px 16px 2px!important;}}@media only screen and (min-width:481px){.truste_box_overlay{width: 80%!important;margin: 20px auto!important;max-width: 800px!important;box-shadow: rgb(0,0,0,0.2) 0px 0px 16px 2px!important;}}</style><style id="ibm-sitenav-menu-hidelinks">@media screen and (max-width: 592.5666656494141px) {.ibm-sitenav-menu-container .ibm-sitenav-menu-list > ul > li {display:none}}@media screen and (min-width: 593.5666656494141px) {.ibm-mobilemenu-sitenavmenu > ul > li {display:none}}</style><script language="javascript" type="text/javascript" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/50200000.js"></script><script language="javascript" type="text/javascript" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/rules_50200000.js"></script><script language="javascript" type="text/javascript" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/dispatcher-v3.js"></script><style type="text/css" class="jquery-comments-css">.jquery-comments ul.navigation li.active:after {background: #2793e6 !important;</style><style type="text/css" class="jquery-comments-css">.jquery-comments ul.navigation ul.dropdown li.active {background: #2793e6 !important;</style><style type="text/css" class="jquery-comments-css">.jquery-comments .highlight-background {background: #2793e6 !important;</style><style type="text/css" class="jquery-comments-css">.jquery-comments .highlight-font {color: #2793e6 !important;}</style><style type="text/css" class="jquery-comments-css">.jquery-comments .highlight-font-bold {color: #2793e6 !important;font-weight: bold;}</style><script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/yahoo-min.js" type="text/javascript"></script><script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/cp-v3.js" type="text/javascript"></script><script src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/json-min.js" type="text/javascript"></script><style type="text/css">.truste_cookie_prefs,#teconsent{display:none !important}</style><script type="text/javascript" async="" charset="utf-8" id="tealium_visitor_service_45main" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/016cb5a38f6c00023daa41e0911e00052006800f00838"></script><script async="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/modules.js" charset="utf-8"></script><style type="text/css">iframe#_hjRemoteVarsFrame {display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;}</style></head>
+<body id="ibm-com" class="ibm-type ibm-sitenav-menu ibm-sitenav-menu-sticky ibm-masthead-sticky ibm-masthead-sticky-showing">
+	
+<div id="ibm-top" class="ibm-landing-page">
+
+<!-- MASTHEAD_BEGIN -->
+<div id="ibm-masthead" role="banner" aria-label="IBM" class="ibm-mhtype-minimal hastransition">
+    <div id="ibm-universal-nav" class="">    
+  
+        <nav role="navigation" aria-label="IBM">
+            <div id="ibm-home"><a href="https://www.ibm.com/br/pt/?lnk=m">IBM®</a></div>
+            <ul id="ibm-menu-links" role="toolbar" aria-label="Mapa do Site" class="ibm-hide">
+                <li><a href="https://www.ibm.com/sitemap/br/pt/">Mapa do Site</a></li>
+            </ul><div class="ibm-masthead-rightside"><div id="ibm-search-module" role="search" aria-labelledby="ibm-masthead" class="ibm-has-scope">
+            <div class="ibm-masthead-search-close"><p class="ibm-ind-link ibm-icononly ibm-padding-bottom-0"><a href="#" class="ibm-close-link ibm-nospacing">Fechar</a></p></div><form id="ibm-search-form" action="https://www.ibm.com/Search/" method="get" aria-labelledby="ibm-masthead">
+                <p>
+                    <label for="q">IBM</label>
+                    <input type="text" maxlength="100" placeholder="Procurar" name="q" id="q" aria-label="Pesquisa IBM Developer" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-owns="ibm-search-typeahead-container"><input name="lnk" type="hidden" value="mhsrch">
+                    <input type="hidden" value="utf" name="en">
+                    <input type="hidden" value="pt" name="lang">
+                    <input type="hidden" value="br" name="cc">
+                    <input type="hidden" value="20" name="nr">
+                    <input type="hidden" value="For developers" name="tabType[0]">
+                    <span class="ibm-search-scope ibm-fadeout" aria-expanded="true"><input class="ibm-styled-checkbox" data-init="false" type="checkbox" name="sn" value="" id="ibm-mh-scopeoption"> <label for="ibm-mh-scopeoption">In Marketplace</label></span><button role="button" type="submit" id="ibm-search" class="ibm-search-link" value="Enviar"><span class="ibm-access">Enviar</span></button>
+                </p>
+            </form><form class="ibm-hide" id="ibm-default-scope-form" action="https://www.ibm.com/search" method="get"><input name="lang" type="hidden" value="pt"><input name="cc" type="hidden" value="br"><input name="tabType[0]" type="hidden" value="Products"><input name="q" type="text"><input name="lnk" type="hidden" value="mhmpsrch"></form>
+        </div><div id="ibm-search-typeahead-container" aria-expanded="true" class="ibm-search-typeahead-container ibm-fadeout"></div><ul aria-label="Tools" role="menubar" class="ibm-masthead-iconsonly"><li role="presentation" class="ibm-masthead-item-signin"><button role="button" aria-haspopup="true" aria-owns="ibm-signin-minimenu-container" class="ibm-profile-link">Minha IBM</button><ul id="ibm-signin-minimenu-container" role="menu" aria-label="Profile" class="ibm-dropdown-menu">    <li class="ibm-dropdown-menu-primary" role="presentation" data-linktype="notifications">       <a class="" href="https://myibm.ibm.com/dashboard/?lnk=mmi" tabindex="0">Minha IBM</a>     </li>    <li class="ibm-dropdown-menu-primary menu-heading" role="presentation">       <span tabindex="0">IBM Developer</span>     </li>   <li class="ibm-dropdown-menu-primary ibm-signin-alt" role="presentation">     <a href="https://www.ibm.com/developerworks/dwwi/jsp/ssologin.jsp?d=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fbr%2Flibrary%2Fiot-smartphone-sensor-actuator-bluemix-apps-trs%2Findex.html&amp;lang=pt_br&amp;a=dwmav" role="menuitem">Faça o login</a>   </li>   <li class="ibm-dropdown-menu-primary dw-register-alt" role="presentation">     <a href="https://www.ibm.com/developerworks/dwwi/jsp/ssoregister.jsp?d=https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fbr%2Flibrary%2Fiot-smartphone-sensor-actuator-bluemix-apps-trs%2Findex.html&amp;lang=pt_br&amp;a=dwmav" role="menuitem">Registre-se</a>   </li></ul></li><li role="presentation" class="ibm-masthead-item-menu"><button role="button" aria-haspopup="true" aria-owns="ibm-burger-menu-container" class="ibm-menu-link">Navegação do site</button></li></ul></div> 
+        </nav>
+  
+        
+       
+    </div>
+</div><div class="ibm-mobilemenu ibm-hide" id="ibm-burger-menu-container" aria-labelledby="ibm-burgermenu-a11y" role="dialog" tabindex="0"><p class="ibm-hide" id="ibm-burgermenu-a11y">Navegação do site</p><div class="ibm-mobilemenu-close"><p class="ibm-icononly ibm-fright ibm-ind-link ibm-nospacing"><a class="ibm-close-link" href="https://www.ibm.com/developerworks/br/library/iot-smartphone-sensor-actuator-bluemix-apps-trs/index.html?lnk=hm#">Fechar</a></p></div><div class="ibm-mobilemenu-section ibm-mobilemenu-sitenavmenu"><ul role="menubar"><li class="ibm-mobile-section-heading ibm-mobile-sitename">
+        <a href="https://www.ibm.com/developerworks/br/?lnk=hm">IBM Developer</a>
+    </li>
+            <li role="presentation">
+                <a href="https://www.ibm.com/developerworks/br/topics/?lnk=hm" role="menuitem" tabindex="0">Aprenda</a>
+            </li>
+            <li role="presentation">
+                <a href="https://www.ibm.com/developerworks/br/downloads/?lnk=hm" role="menuitem" tabindex="-1">Desenvolva</a>
+            </li>
+            <li role="presentation">
+                <a href="https://www.ibm.com/developerworks/br/community/?lnk=hm" role="menuitem" tabindex="-1">Conecte-se</a>
+            </li>
+            <li role="presentation">
+                <a href="https://developer.ibm.com/events/category/sao-paulo-br/?fa=date:DESC&amp;fb=&amp;fc=upcoming&amp;lnk=hm#sao-paulo-br" role="menuitem" tabindex="-1">Eventos</a>
+            </li>
+        </ul></div><div class="ibm-mobilemenu-section"><ul class="ibm-mobilemenu-mhlinks" aria-label="Saiba mais sobre a IBM"><li><div data-widget="showhide" data-type="panel" class="ibm-show-hide ibm-widget-processed"><h2><a href="javascript:void();">Marketplace</a></h2><div class="ibm-container-body" style="display: none;"><ul><li><a href="https://www.ibm.com/products/br/pt/?lnk=hmhm"><span>Todos os produtos</span></a></li><li><a href="https://www.ibm.com/br-pt/products?lnk=hmhmmpr"><span>Marketplace</span></a></li><li><a href="https://www.ibm.com/software/br/info/trials?lnk=hmSTW_BR_MAST_C1_TL&amp;lnk2=trial_THP&amp;psrc=none&amp;pexp=def"><span>Teste nossos produtos</span></a></li><li><a href="https://www.ibm.com/br-pt/marketplace/collections/offers-and-discounts/?lnk=hmSTW_BR_MAST_C1_TL&amp;lnk2=buy_MPDISC&amp;psrc=none&amp;pexp=def"><span>Ofertas especiais para você</span></a></li><li><a href="https://www.ibm.com/br-pt/products/partneratibm?lnk=hmhmmpr_brpt&amp;lnk2=learn"><span>IBM Partners</span></a></li><li><a href="https://www.ibm.com/br-pt/analytics?lnk=hmhpmpr_bua_brpt&amp;lnk2=learn"><span>Analytics</span></a></li><li><a href="https://www.ibm.com/br-pt/cloud?lnk=hmmpr_bucl_brpt&amp;lnk2=learn"><span>Cloud</span></a></li><li><a href="https://www.ibm.com/br-pt/digital-marketing?lnk=hmmpr_buwa_brpt&amp;lnk2=learn"><span>Watson</span></a></li><li><a href="https://www.ibm.com/br-pt/internet-of-things?lnk=hmhpmpr_iot_brpt&amp;lnk2=learn"><span>Internet of Things</span></a></li><li><a href="https://www.ibm.com/solutions/br/pt/?lnk=hmfde"><span>Soluções de segmento de mercado</span></a></li><li><a href="https://www.ibm.com/br-pt/it-infrastructure?lnk=hm"><span>Infraestrutura de TI</span></a></li><li><a href="https://www.ibm.com/br-pt/security?lnk=hmmpr_buse_brpt&amp;lnk2=learn"><span>Security</span></a></li><li><a href="https://www.ibm.com/br-pt/talent-management?lnk=hmmpr_buta_brpt&amp;lnk2=learn"><span>Talent Management</span></a></li></ul></div></div></li><li><div data-widget="showhide" data-type="panel" class="ibm-show-hide ibm-widget-processed"><h2><a href="javascript:void();">Serviços</a></h2><div class="ibm-container-body" style="display: none;"><ul><li><a href="https://www.ibm.com/br-pt/services?lnk=hmhpmse_ts_brpt&amp;lnk2=learn"><span>Serviços</span></a></li><li><a href="https://www.ibm.com/financing/br-pt/?lnk=hmmse_fin_brpt&amp;lnk2=learn"><span>Financiamento</span></a></li><li><a href="https://www.ibm.com/solutions/br/pt/?lnk=hmfde"><span>Conhecimento de mercado</span></a></li><li><a href="https://www.ibm.com/training/?lnk=hm"><span>Treinamento e qualificação (US)</span></a></li></ul></div></div></li><li><a href="https://www.ibm.com/solutions/br/pt/?lnk=hmmin">Indústrias</a></li><li><div data-widget="showhide" data-type="panel" class="ibm-show-hide ibm-widget-processed"><h2><a href="javascript:void();">Desenvolvedores</a></h2><div class="ibm-container-body" style="display: none;"><ul><li><a href="https://www.ibm.com/developerworks/br/?lnk=hm"><span>developerWorks</span></a></li><li><a href="https://www.ibm.com/partnerworld/?lnk=hm"><span>PartnerWorld</span></a></li></ul></div></div></li><li><a href="https://www.ibm.com/support/br/pt/?lnk=hmmsdSU-supo-brpt">Suporte</a></li><li><a href="https://www.ibm.com/jobs/br?lnk=hmmca-brpt">Carreiras</a></li></ul></div></div><div class="ibm-mhplaceholder"></div><!-- MASTHEAD_END -->
+	    
+<!-- LAYOUT -->
+<div id="ibm-content-wrapper">
+    <!-- LEADSPACE_BEGIN -->
+    <header role="banner" aria-labelledby="ibm-pagetitle-h1">
+        
+        <!-- MASTHEAD_SITENAV_BEGIN -->
+        <div class="ibm-sitenav-menu-container" data-widgetprocessed="true">
+    <div class="ibm-sitenav-menu-name">
+        <a href="https://www.ibm.com/developerworks/br/">IBM Developer</a>
+    </div>
+    <div class="ibm-sitenav-menu-list">
+        <ul role="menubar">
+            <li role="presentation">
+                <a href="https://www.ibm.com/developerworks/br/topics/" role="menuitem" tabindex="0">Aprenda</a>
+            </li>
+            <li role="presentation">
+                <a href="https://www.ibm.com/developerworks/br/downloads/" role="menuitem" tabindex="-1">Desenvolva</a>
+            </li>
+            <li role="presentation">
+                <a href="https://www.ibm.com/developerworks/br/community/" role="menuitem" tabindex="-1">Conecte-se</a>
+            </li>
+            <li role="presentation">
+                <a href="https://developer.ibm.com/events/category/sao-paulo-br/?fa=date%3ADESC&amp;fb=&amp;fc=upcoming#sao-paulo-br" role="menuitem" tabindex="-1">Eventos</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- BEGIN IBM DEVELOPER BANNER -->
+<style>
+    #dw-mast-banner {
+        background-color: #e9e9e9;
+        /* background-color: #000; */
+        /* min-height: 75px; */
+    }
+    #dw-mast-banner.ibm-band { padding: 0; }
+    #dw-mast-banner .ibm-columns { padding: 0; min-height: 100px; }
+    #dw-mast-banner .dw-mast-banner-txt { padding: 10px 0 0; margin-left: 2rem; color: #4ca7a5; display: inline; }
+    #dw-mast-banner .dw-mast-banner-cta { padding: 14px 0 0 20px; margin-right: 2rem; color: #4ca7a5; display: inline; }
+    #dw-mast-banner .dw-mast-banner-txt p.ibm-h4 { font-size: 1.125rem; }
+    #dw-mast-banner .dw-mast-banner-txt a { color: #1e1e1e; }
+    #dw-mast-banner .dw-mast-banner-txt span { white-space: nowrap; }
+    #dw-mast-banner .dw-mast-banner-txt a { text-decoration: none; }
+    /* #dw-mast-banner .dw-mast-banner-txt a:hover { text-decoration: underline; } */
+    #dw-mast-banner .ibm-btn-pri {
+        background-color: #000;
+        border: 1px solid #4ca7a5;
+        color: #4ca7a5;
+    }
+    #dw-mast-banner .ibm-btn-pri:hover {
+        background-color: #4ca7a5;
+        color: #fff;
+    }
+        @media only screen and (max-width:1100px) {
+        #dw-mast-banner .dw-mast-banner-cta { padding: 10px 0 0 20px; }
+        #dw-mast-banner .dw-mast-banner-txt p.ibm-h4 { font-size: 1.0rem; }
+    }
+    @media only screen and (max-width:999px) {
+        #dw-mast-banner .dw-mast-banner-txt { margin-left: 0.5rem; }
+        #dw-mast-banner .dw-mast-banner-cta { margin-right: 0.5rem; }
+    }
+    @media only screen and (max-width:959px) {
+        #dw-mast-banner .dw-mast-banner-txt { margin-left: 2rem; }
+        #dw-mast-banner .dw-mast-banner-cta { margin-right: 2rem; }
+        #dw-mast-banner .ibm-btn-pri { white-space: nowrap; font-size: .875rem; }
+        #dw-mast-banner .dw-mast-banner-txt p.ibm-h4 {
+            font-size: .9375rem;
+            text-align: center;
+            font-weight: 400;
+        }
+    }
+    @media only screen and (max-width:600px) {
+        #dw-mast-banner .dw-mast-banner-txt { margin-left: 1rem; }
+        #dw-mast-banner .dw-mast-banner-cta { margin-right: 1rem; }
+    }
+    @media only screen and (max-width:579px) {
+        #dw-mast-banner .dw-mast-banner-txt, #dw-mast-banner .dw-mast-banner-cta { display: block; }
+        #dw-mast-banner .dw-mast-banner-txt { margin-left: 1rem; margin-right: 1rem; }
+        #dw-mast-banner .dw-mast-banner-cta { margin-right: 0; text-align: center; }
+        #dw-mast-banner .dw-mast-banner-txt p.ibm-h4 { padding: 0; }
+        #dw-mast-banner .dw-mast-banner-cta { padding: 10px 0 0 0; }
+    }
+</style>
+<div id="dw-mast-banner" class="ibm-band">
+    <div class="ibm-vertical-center">
+        <div class="ibm-center-block ibm-vertical-center">
+            <div class="dw-mast-banner-txt ibm-plex-sans-regular">
+                <a href="https://ibm.biz/maratona?cm_mmc=OSocial_Blog-_-Developer_IBM+Developer-_-BR_BR-_-Maratona+-+behind+the+code&amp;cm_mmca1=000021IQ&amp;cm_mmca2=10001376">
+                    <p class="ibm-h4"><span style="font-weight: 600;">Maratona Behind the Code:</span> Participe desse desafio! <span style="color: #3b6caa">Saiba mais</span></p>
+                </a>
+                <!-- <a href="https://developer.ibm.com/callforcode/">
+                    <p class="ibm-h4">O <span style="font-weight: 600;">Call for Code 2019 Global Challenge</span> está aberto para inscrições. <span style="color: #3b6caa">Saiba mais (em inglês)</span></p>
+                </a> -->
+                <!-- <p class="ibm-h4">O developerWorks está fazendo a transição para o <span>IBM Developer</span>. Teremos um novo visual e áreas de tópicos atualizadas,
+                    mas continuaremos oferecendo o excelente conteúdo que você está acostumado a receber.</p> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- GREY BANNER OPTION -->
+<!-- <div class="dw-banner-wrapper"/>
+<style>
+  .think-announcement{
+    background: #e9e9e9;
+    min-height: 53px;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .think-announcement p{
+    text-align: center;
+    font-size: 1.125rem;
+    line-height: 1.325rem;
+    font-weight: 300;
+    padding-bottom: 0;
+  }
+  .think-announcement a p{
+    display: table;
+    color: #1e1e1e;
+    width: auto;
+    margin: 0 auto;
+  }
+  .think-announcement a {
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+  .think-announcement a:hover {
+      text-decoration: underline;
+      display: block;
+      text-align: center;
+  }
+  .think-announcement a p strong{
+    color: #333 !important;
+    padding: 10px 20px !important;
+    margin-left: 15px;
+    display: inline-block;
+    background-color: #56d3d0;
+    color: #000;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .think-announcement a p i{
+    padding-left: 20px;
+    font-style: italic;
+  }
+  #dw-mast-banner {
+      background-color: #e9e9e9;;
+  }
+</style>
+    <div class="think-announcement">
+      <a href="https://developer.ibm.com/callforcode/">
+         <p>Participe do Code @ Think 2019<span class="ibm-hidden-small"> | </span><br class="ibm-br-small" />São Francisco | 12 - 15 de Fevereiro <br class="ibm-br-small" /><strong>Registre-se agora</strong></p>
+      </a>
+    </div>
+</div>  -->        <!-- MASTHEAD_SITENAV_END -->
+        
+        <!-- NAVIGATION_TRAIL_BEGIN -->
+        <div id="ibm-leadspace-head" class="ibm-alternate">
+            <div id="ibm-leadspace-body">
+                <nav aria-label="Breadcrumb" role="navigation">                     
+                                <ul id="dw-navigation-trail" itemscope="" itemtype="http://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a itemprop="item" href="https://www.ibm.com/developerworks/br/topics/"><span itemprop="name">Aprenda</span></a><meta itemprop="position" content="1"></li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a itemprop="item" href="https://www.ibm.com/developerworks/iot/"><span itemprop="name">Internet of Things</span></a><meta itemprop="position" content="2"></li></ul>
+                </nav>
+            </div>
+        </div>
+        <!-- NAVIGATION_TRAIL_END -->
+        
+    </header>
+    <!-- LEADSPACE_END -->
+    
+    <!-- MAIN_CONTENT_BEGIN -->
+    <main role="main" aria-label=""> 
+        <div id="ibm-pcon">
+            <!-- BEGIN_IBM-CONTENT -->
+            <div id="ibm-content">
+                <!-- BEGIN_IBM-CONTENT-BODY -->
+                <div id="ibm-content-body">
+                    <!-- BEGIN_IBM-CONTENT-MAIN -->
+                    <div id="ibm-content-main" class="dw-article">                        
+                        <!-- BEGIN_INTERIOR-COLUMNS -->
+                                <div class="ibm-columns dw-article-toc">
+                                    <!-- LEFT_6_2_CONTENT_COLUMN_BEGIN -->  
+                                    <div id="dw-article-toc-container" class="ibm-col-6-2">
+                                        <div id="dw-article-toc-body" style="width: 380px; height: 451px;" data-widget="scrollable" data-height="451" class="nano ibm-widget-processed has-scrollbar"><div class="nano-content" tabindex="-1" style="right: -14px; padding-right: 24px;">
+                                            <h2>Conteúdo</h2><div class="ibm-alternate-rule"><hr></div><ul role="directory" aria-label="Índice" class="ibm-plain-list"><li><a onclick="tocLink('#ibm-pagetitle-h1')" role="link" tabindex="0">Introdução</a></li><li><a onclick="tocLink('#prereq')" role="link" tabindex="0">O
+                que será necessário para construir esses aplicativos IoT</a></li><li><a onclick="tocLink('#arch')" role="link" tabindex="0">Arquitetura de nossos aplicativos IoT</a></li><li><a onclick="tocLink('#create-iot-bluemix')" role="link" tabindex="0">1. Crie seu próprio aplicativo IoT no
+                IBM Cloud</a></li><li><a onclick="tocLink('#reg-smartphone-iotp')" role="link" tabindex="0">2. Registre seu smartphone no Watson IoT
+                Platform</a></li><li class="dw-highlight"><a onclick="tocLink('#setup-iot-starter')" role="link" tabindex="0">3. Instale e configure o aplicativo IoT Starter
+                Mobile em seu smartphone</a></li><li><a onclick="tocLink('#msgs-sent-iotp')" role="link" tabindex="0">4. Verifique se as mensagens do smartphone estão
+                sendo enviadas ao Watson IoT Platform</a></li><li><a onclick="tocLink('#proc-msgs-sensor-app')" role="link" tabindex="0">5. Mensagens de
+                processo de seu aplicativo sensor de IoT</a></li><li><a onclick="tocLink('#send-alert')" role="link" tabindex="0">6. Envie um alerta quando seu smartphone
+                cair</a></li><li><a onclick="tocLink('#send-cmd-smartphone')" role="link" tabindex="0">7. Envie um comando ao seu smartphone</a></li><li><a onclick="tocLink('#iot-app-sensor-and-actuator')" role="link" tabindex="0">8. Acenda e
+                apague a luz de seu smartphone ao virá-lo horizontalmente</a></li><li><a onclick="tocLink('#conclusion')" role="link" tabindex="0">Conclusão</a></li><li><a onclick="tocLink('#artdownload')" role="link" tabindex="0">Recursos para download</a></li><li><a onclick="tocLink('#icomments')" role="link" tabindex="0">Comentários</a></li></ul>
+                                        </div><div class="nano-pane" style="opacity: 1; visibility: visible;"><div class="nano-slider" style="height: 256px; transform: translate(0px);"></div></div></div>
+                                    </div>
+                                    <!-- LEFT_6_2_CONTENT_COLUMN_END -->
+                                    
+                                    <!-- CENTER_6_4_CONTENT_COLUMN_BEGIN -->
+                                    <div class="ibm-col-6-4">
+                                        <h1 id="ibm-pagetitle-h1" class="ibm-h1">Transforme seu smartphone em um sensor e em um atuador</h1><p class="dw-article-subhead">Crie e implemente aplicativos IoT de modo rápido e fácil com o IBM Cloud e
+            com o Watson IoT Platform</p>
+                                        <!-- Article Top Bar -->
+                                                <div class="ibm-columns dw-article-topbar">
+                                                    <!-- Author and article info. -->
+                                                    <div class="ibm-col-6-2 ibm-col-medium-6-4 dw-article-metadata">
+                                                        <div class="dw-article-avatar"><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/p-flivigni60.jpg" alt="Fabrice Livigni photo" width="42" height="42"></div><div class="dw-article-authordate"><span class="dw-article-author"><a href="https://developer.ibm.com/author/livignif/">Fabrice Livigni</a></span><br><span class="dw-article-pubdate">Publicado em 26/Dez/2016</span></div>
+                                                    </div>
+                                                    <!-- Social -->
+                                                    <div class="ibm-col-6-2 ibm-col-medium-6-4 ibm-col-small-6-2 dw-article-social">
+                                                        <!-- Sharing links -->
+                                                        <div id="dw-article-share-inline">
+                                                            <div class="dw-article-sharelink-inline">
+                                                                <div class="ibm-sharethispage"><h4 class="ibm-bold">Compartilharesta página</h4><p class="ibm-icononly"><a class="ibm-digg-encircled-link" href="https://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fbr%2Flibrary%2Fiot-smartphone-sensor-actuator-bluemix-apps-trs%2Findex.html&amp;title=Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador" data-id="digg" onclick="return IBMCore.common.module.sharethispage.gotoUrl(window.open(), this);">Digg</a><a class="ibm-facebook-encircled-link" href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fbr%2Flibrary%2Fiot-smartphone-sensor-actuator-bluemix-apps-trs%2Findex.html&amp;t=Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador" data-id="facebook" onclick="return IBMCore.common.module.sharethispage.gotoUrl(window.open(), this);">Facebook</a><a class="ibm-twitter-encircled-link" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fibm.co%2F2lP1PDh&amp;text=Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador&amp;via=developerWorks" data-id="twitter" onclick="return IBMCore.common.module.sharethispage.gotoUrl(window.open(), this);">Twitter</a><a class="ibm-delicious-encircled-link" href="https://delicious.com/post?url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fbr%2Flibrary%2Fiot-smartphone-sensor-actuator-bluemix-apps-trs%2Findex.html&amp;title=Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador" data-id="delicious" onclick="return IBMCore.common.module.sharethispage.gotoUrl(window.open(), this);">Delicious</a><a class="ibm-linkedin-encircled-link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fbr%2Flibrary%2Fiot-smartphone-sensor-actuator-bluemix-apps-trs%2Findex.html&amp;title=Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador" data-id="linkedin" onclick="return IBMCore.common.module.sharethispage.gotoUrl(window.open(), this);">Linked In</a><a class="ibm-googleplus-encircled-link" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fbr%2Flibrary%2Fiot-smartphone-sensor-actuator-bluemix-apps-trs%2Findex.html&amp;t=Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador" data-id="googleplus" onclick="return IBMCore.common.module.sharethispage.gotoUrl(window.open(), this);">Google+</a><a class="ibm-email-encircled-link" href="mailto:?subject=Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador&amp;body=http%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fbr%2Flibrary%2Fiot-smartphone-sensor-actuator-bluemix-apps-trs%2Findex.html" data-id="email" onclick="">Enviar esta página por e-mail</a></p></div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Number of comments and link to comments -->
+                                                        <div id="dw-article-cmts">
+                                                            <div class="dw-article-cmtslink">
+                                                                <a onclick="tocLink('#icomments')" href="#icomments" role="link" tabindex="0" aria-label="Comments">
+                                                                    <img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/dw-article-cmt-icon.png" alt="Comments" width="29" height="29">
+                                                                </a>
+                                                            </div>
+                                                            <div class="dw-article-cmtslink">
+                                                                <a onclick="tocLink('#icomments')" href="#icomments" role="link" tabindex="0">
+                                                                    <div id="nCmts">0</div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                        <!-- Article Body -->
+                                        
+                                        <p>A Internet of Things, ou IoT, refere-se à crescente variedade de
+                dispositivos conectados à Internet que capturam ou geram uma enorme
+                quantidade de informações a cada dia. Para consumidores, esses
+                dispositivos incluem telefones celulares, dispositivos esportivos
+                portáteis, sistemas de climatizadores e muito mais. Em uma configuração
+                industrial, esses dispositivos e sensores podem ser encontrados no
+                equipamento de fabricação, na cadeia de suprimentos e em componentes em
+                veículos. A IoT pode tornar a vida mais fácil para todos nós. Para
+                desenvolver e implementar facilmente soluções de IoT de todos os tamanhos,
+                a IBM criou o IBM Watson IoT Platform.</p><p>Neste tutorial, você aprenderá como é possível usar o Watson IoT Platform
+                para criar uma solução IoT simples transformando seu smartphone em um
+                sensor (lendo e enviando dados), mas também em um atuador (lendo e agindo
+                sobre os dados).</p><p>Você usará um aplicativo IoT Starter Mobile em seu smartphone. Para
+                transformar seu smartphone em um sensor, construiremos um aplicativo IoT
+                que lê os valores do <span data-widget="tooltip" class="tipso_style ibm-widget-processed">acelerômetro</span> valores que são enviados a partir de seu smartphone e reage a
+                uma ação específica se os valores atingem um determinado limite. Para
+                transformar seu smartphone em um atuador, construiremos um aplicativo IoT
+                que envia comandos específicos para seu smartphone que pode, então, reagir
+                aos comandos recebidos.</p><h2 id="prereq" class="ibm-h2">O
+                que será necessário para construir esses aplicativos IoT</h2><p>Serão necessários os seguintes dispositivos ou contas:</p><ul class="ibm-bullet-list"><li>Uma conta do IBM Cloud® . (É possível solicitar uma avaliação
+                    grátis <a href="https://console.bluemix.net/?cm_sp=dwbrazil-bluemix-_-iot-smartphone-sensor-actuator-bluemix-apps-trs-_-article" target="_blank">aqui</a>.)</li><li>Um smartphone (um smartphone Android ou iOS).</li><li>Para um smartphone iOS, uma conta do iTunes para instalar o aplicativo
+                    IoT Starter Mobile.</li><li>Uma conta do twitter para ser notificado por um tweet (opcional).</li><li>Uma conta de e-mail com recurso de retransmissão de SMTP para ser
+                    notificado por uma mensagem de e-mail (opcional).</li></ul><p>Antes de iniciar, revise as informações a seguir:</p><ul class="ibm-bullet-list"><li>Familiaridade com o IBM Cloud Platform. É necessário saber como
+                    navegar pelo catálogo e instanciar um dos serviços. (É possível
+                    concluir os tutoriais na <a href="https://www.ibm.com/developerworks/cloud/bluemix/fundamentals/node/" target="_blank">linha de aprendizagem do IBM Cloud Fundamentals</a>
+                    para ganhar um entendimento completo do IBM Cloud).</li><li>Familiaridade com Node-RED. É necessário entender como usar nós no
+                    Node-RED e como processar uma mensagem no Node-RED. Node-RED é um
+                    front-end para JavaScript, portanto, também é necessária alguma
+                    experiência com JavaScript. É possível usar a <a href="http://nodered.org/docs/getting-started/first-flow" target="_blank">documentação de introdução no website do
+                        Node-RED</a> para ajudá-lo a ganhar esta familiaridade.</li><li>Revise a documentação de <a href="https://console.ng.bluemix.net/docs/services/IoT/index.html" target="_blank">Introdução ao Watson IoT Platform</a> do
+                    IBM Cloud.</li></ul><h2 id="arch" class="ibm-h2">Arquitetura de nossos aplicativos IoT</h2><p>A visualização de alto nível da arquitetura para nossa solução IoT é
+                mostrada na figura a seguir:</p><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img_architecture.png" class="ibm-downsize" alt="" width="1079" height="682"><p class="ibm-ind-link"><a class="ibm-popup-link" onclick="IBMCore.common.widget.overlay.show('N1009B');return false;" href="#N1009B">Clique para ver a imagem maior</a></p><p>Neste tutorial, você criará um aplicativo IoT no IBM Cloud que gerenciará
+                dois outros aplicativos IoT:</p><ul class="ibm-bullet-list"><li>Um aplicativo sensor de IoT que lê e recebe valores do acelerômetro a
+                    partir de seu smartphone. Este aplicativo gerencia o caso de uso de
+                    quando seu smartphone está caindo ou se movendo muito rápido. Se sua
+                    aceleração exceder um determinado limite, você será alertado.</li><li>Um aplicativo atuador de IoT que envia comandos simples ao seu
+                    smartphone. Usaremos o aplicativo IoT Starter Mobile, que fornece a
+                    lista de comandos simples que seu smartphone pode interpretar. Por
+                    exemplo, com base na posição de seu smartphone, acenderemos ou
+                    apagaremos a luz ou mudaremos a cor de plano de fundo de seu
+                    smartphone.</li></ul><div class="dw-article-head-container"><div class="dw-article-step"><div class="dw-article-stepnum">1</div></div><div class="dw-article-h2"><h2 id="create-iot-bluemix" class="ibm-h2">Crie seu próprio aplicativo IoT no
+                IBM Cloud</h2></div></div><p>Nosso principal aplicativo IoT no IBM Cloud será nosso aplicativo backend em
+                nossa solução de IoT. Nosso aplicativo backend lerá, receberá e
+                interpretará mensagens de carga útil recebidas que contêm dados do sensor.
+                Além disso, ele definirá e enviará comandos de IoT aos atuadores com base
+                no cumprimento de determinadas condições.</p><ol type="1"><li>Efetue login em sua <a href="https://console.bluemix.net/?cm_sp=dwbrazil-bluemix-_-iot-smartphone-sensor-actuator-bluemix-apps-trs-_-article" class="bluemix-home" target="_blank">conta do
+                        IBM Cloud.</a> . </li><li>No catálogo do IBM Cloud, a partir da seção Textos Padrão, selecione o
+                    texto padrão do Internet of Things Platform Starter.</li><li>Na área de janela à direita, especifique um nome exclusivo para seu
+                    aplicativo, que é usado para criar um nome do host exclusivo para seu
+                    aplicativo. Em seguida, clique em <strong>CRIAR</strong>.</li></ol><p>O texto padrão do Internet of Things Platform Starter inclui
+                automaticamente o serviço do Internet of Things Platform e um serviço do
+                Banco de Dados NoSQL do Cloudant em seu aplicativo. Ele também inclui um
+                ambiente de tempo de execução Node-RED para seu aplicativo.</p><div class="dw-article-head-container"><div class="dw-article-step"><div class="dw-article-stepnum">2</div></div><div class="dw-article-h2"><h2 id="reg-smartphone-iotp" class="ibm-h2">Registre seu smartphone no Watson IoT
+                Platform</h2></div></div><p>É necessário registrar seu smartphone no Watson IoT Platform antes de poder
+                conectá-lo à IoT. O serviço do IBM Cloud IoT Platform aloca automaticamente
+                uma organização de IoT para você. Uma organização de IoT é um espaço usado
+                para conectar e gerenciar dispositivos no IBM Watson IoT Platform para que
+                seus aplicativos possam acessar seus dados ativos e históricos. </p><ol type="1"><li>Em seu painel do IBM Cloud, selecione o serviço do Internet of Things
+                    Platform. Em seguida, clique em <strong>Ativar painel</strong>. <br>O
+                    painel para o IBM Watson IoT Platform se abre em uma nova guia do
+                    navegador. O ID da organização é designado ao seu aplicativo e é
+                    exibido no canto superior direito.<br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img001.png" class="ibm-downsize" alt="" width="1015" height="492"><p class="ibm-ind-link"><a class="ibm-popup-link" onclick="IBMCore.common.widget.overlay.show('N100D8');return false;" href="#N100D8">Clique para ver a imagem maior</a></p></li><li>Na página Placas, que é onde você gerencia seus smartphones e seus
+                    dados, passe o mouse sobre o menu à esquerda e selecione
+                        <strong>Smartphones</strong>. Na página Smartphones, clique em
+                        <strong>Incluir Smartphone</strong>.</li><li>Na página Incluir Smartphone, clique em <strong>Criar tipo de
+                        smartphone</strong>. O nome para o tipo de smartphone faz
+                    distinção entre maiúsculas e minúsculas e deve ser
+                    <code>Android</code> ou <code>iPhone</code>. O aplicativo IoT Starter
+                    Mobile espera uma dessas palavras como o tipo de smartphone.</li></ol><p>É isso! Seu smartphone foi registrado no Watson IoT Platform. Você ainda
+                precisa conectá-lo ao Watson IoT Platform, mas, antes de poder fazer isso,
+                é necessário instalar e configurar o aplicativo IoT Starter Mobile em seu
+                smartphone.</p><div class="dw-article-head-container"><div class="dw-article-step"><div class="dw-article-stepnum">3</div></div><div class="dw-article-h2"><h2 id="setup-iot-starter" class="ibm-h2">Instale e configure o aplicativo IoT Starter
+                Mobile em seu smartphone</h2></div></div><p>Você usará o aplicativo IoT Starter Mobile para ler e enviar dados do
+                sensor recebidos de seu smartphone e, também, para transformar seu
+                smartphone para ser um atuador que possa receber e executar comandos. Este
+                aplicativo foi desenvolvido com idiomas nativos nas plataformas iOS e
+                Android. Com este aplicativo móvel, é possível publicar os seguintes
+                eventos:</p><ul class="ibm-bullet-list"><li>Evento de acelerômetro X, Y, Z de seu smartphone</li><li>Evento do touchMove</li><li>Evento de texto</li></ul><div class="dw-article-head-container"><div class="dw-article-step"><div class="dw-article-stepnum">3a</div></div><div class="dw-article-h3"><h3 id="install-ios-starter-app" class="ibm-h3">Instale o
+                aplicativo IoT Starter Mobile em seu smartphone iOS</h3></div></div><p>Se você for um desenvolvedor de iOS experiente, poderá fazer download do
+                aplicativo demo <a href="https://github.com/ibm-watson-iot/iot-starter-for-ios" target="_blank">IoT Starter Mobile para iOS</a> a partir do projeto
+                ibm-watson-iot do GitHub, importá-lo em seu ambiente de desenvolvimento do
+                Xcode e, em seguida, construir o arquivo do pacote <code>.ipa</code> você
+                mesmo. As etapas aqui contidas demonstram como instalar o arquivo de
+                pacote <code>.ipa</code> manualmente usando o iTunes.</p><ol type="1"><li>Faça download do arquivo IoTStarter.ipa a partir do meu projeto <a href="https://github.com/olympien13/watson-iot-actuator/raw/master/IoT%20Starter%20Mobile%20App/iOS%20Version/IoTstarter.ipa" target="_blank">watson-iot-actuator</a> do GitHub para seu
+                    computador.</li><li>Dê um clique duplo no arquivo <code>.ipa</code> . O iTunes se abre
+                    automaticamente (se ele está instalado em seu sistema).</li><li>Conecte seu smartphone iOS ao seu computador com seu cabo USB.</li><li>No iTunes, clique no ícone para seu smartphone e, em seguida, clique
+                    em <strong>Aplicativos</strong>.</li><li>Clique no botão <strong>Instalar</strong> para o aplicativo IoT
+                    Starter Mobile.<br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img002.png" class="ibm-downsize" alt="" width="615" height="244"><p class="ibm-ind-link ibm-hide"><a class="ibm-popup-link" onclick="IBMCore.common.widget.overlay.show('N10133');return false;" href="#N10133">Clique para ver a imagem maior</a></p></li><li>No canto inferior direito da visualização Aplicativos, clique no botão
+                        <strong>Aplicar</strong>. botão </li><li>Em seu smartphone, abra o aplicativo IoT Starter Mobile. O ícone para
+                    o aplicativo é semelhante a este
+                        ícone:<br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img003.png" class="ibm-downsize" alt="" width="80" height="80"></li></ol><p>Dependendo da versão do iOS em seu smartphone, pode ser solicitado para
+                confiar no desenvolvedor International Business Machines. Nas
+                Configurações Gerais para seu smartphone iOS, role para baixo e selecione
+                    <strong>Gerenciamento de Dispositivo</strong>. Selecione
+                    <strong>International Business Machines</strong> e, em seguida, clique
+                no link <strong>Confiar em "International Business Machines"</strong> .
+                Você verá o IoT Starter na lista de aplicativos e ele será listado como
+                verificado.</p><div class="dw-article-head-container"><div class="dw-article-step"><div class="dw-article-stepnum">3b</div></div><div class="dw-article-h3"><h3 id="install-android-starter-app" class="ibm-h3">Instale o
+                aplicativo IoT Starter Mobile em seu smartphone Android</h3></div></div><p>Se você for um desenvolvedor de Android experiente, poderá fazer download
+                do aplicativo demo <a href="https://github.com/ibm-watson-iot/iot-starter-for-android" target="_blank">IoT Starter Mobile para Android</a> a partir do
+                projeto ibm-watson-iot do GitHub, importá-lo em seu ambiente de
+                desenvolvimento do Android e, em seguida, construir o arquivo
+                <code>.apk</code> você mesmo. As etapas aqui contidas demonstram como
+                instalar o arquivo de pacote <code>.ipa</code> . </p><ol type="1"><li>Em seu telefone Android, acesse <strong>Configurações</strong> &gt;
+                        <strong>Segurança</strong>. Em Administração do Smartphone, ative
+                        <strong>Origens desconhecidas</strong>. Esta configuração permite
+                    instalar arquivos <code>.apk</code> de fora do Google Play.</li><li> Abra o navegador em seu smartphone Android e insira esta URL:<br><a href="https://github.com/olympien13/watson-iot-actuator/tree/master/IoT%20Starter%20Mobile%20App/Android%20Version" target="_blank">http://ibm.biz/asdwapk</a><p> Em vez de digitar a
+                        URL, é possível usar o QRcode neste artigo.</p><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img005.png" class="ibm-downsize" alt="" width="103" height="103"></li><li>Faça download do arquivo <code>iot-starter-for-android.apk</code> em
+                    seu smartphone Android.</li><li>Use um aplicativo explorador de arquivos para localizar o arquivo na
+                    pasta <code>Downloads</code> e selecione o arquivo <code>.apk</code>
+                    para instalá-lo. </li></ol><div class="dw-article-head-container"><div class="dw-article-step"><div class="dw-article-stepnum">4</div></div><div class="dw-article-h2"><h2 id="msgs-sent-iotp" class="ibm-h2">Verifique se as mensagens do smartphone estão
+                sendo enviadas ao Watson IoT Platform</h2></div></div><p>Após instalar o aplicativo IoT Starter Mobile em seu smartphone, é
+                necessário configurá-lo com suas credenciais de IoT e conectar o
+                aplicativo ao Watson IoT Platform.</p><ol type="1"><li>Abra o aplicativo IoT Starter em seu smartphone e especifique as
+                    credenciais de sua organização e de seu smartphone.</li><li>Abra o perfil para o aplicativo. <ul class="ibm-bullet-list"><li>Para dispositivos Android, selecione o menu no canto superior
+                            direito e selecione <strong>Abrir perfis</strong>. <img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img006.png" class="ibm-downsize" alt="" width="226" height="397"></li><li>Para dispositivos iPhone, selecione o link
+                                <strong>Pr...iles</strong> e selecione <strong>Abrir
+                                perfis</strong>. <img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img007.png" class="ibm-downsize" alt="" width="233" height="394"></li></ul></li><li>Clique em <strong>Salvar configuração</strong> e forneça um nome ao
+                    seu perfil, tal como <code>myProfile</code>. Clique em
+                        <strong>Salvar</strong> e volte para a janela de login. Suas
+                    credenciais agora estão salvas para a próxima vez que você se
+                    conectar.</li><li>Clique em <strong>Ativar Sensor</strong>, o que faz com que seu
+                    aplicativo envie mensagens ao Watson IoT Platform.</li><li>No painel do Watson IoT Platform (no IBM Cloud), no menu à esquerda,
+                    selecione <strong>Smartphones</strong>. Selecione seu smartphone na
+                    lista. Verifique se os eventos do acelerômetro são exibidos na seção
+                        <strong>Eventos Recentes</strong> .</li><li>Se desejar, é possível incluir uma placa em seu painel para visualizar
+                    os dados de seu smartphone (evento em tempo real). Use a <a href="https://console.ng.bluemix.net/docs/services/IoT/data_visualization.html" target="_blank">documentação do Watson IoT Platform no IBM Cloud</a>
+                    para saber como criar painéis e placas.</li></ol><div class="dw-article-head-container"><div class="dw-article-step"><div class="dw-article-stepnum">5</div></div><div class="dw-article-h2"><h2 id="proc-msgs-sensor-app" class="ibm-h2">Mensagens de
+                processo de seu aplicativo sensor de IoT</h2></div></div><p>Agora que seu smartphone está registrado e você verificou que ele está
+                enviando os dados do acelerômetro ao Watson IoT Platform, precisamos
+                conectar o aplicativo IoT ao Watson IoT Platform usando o serviço de IoT.
+                Podemos, então, começar a usar os dados desse smartphone em nossa solução
+                de IoT.</p><ol type="1"><li>No painel do IBM Cloud, acesse seu aplicativo e clique na rota do
+                    aplicativo para acessá-lo. <br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img008.png" class="ibm-downsize" alt="" width="810" height="233"><p class="ibm-ind-link"><a class="ibm-popup-link" onclick="IBMCore.common.widget.overlay.show('N101EF');return false;" href="#N101EF">Clique para ver a imagem maior</a></p></li><li>Abra seu editor de fluxo Node-RED.</li><li>No editor Node-RED, que se abre e contém um fluxo de amostra,
+                    selecione todos os nós existentes e exclua-os.</li><li>Crie um novo fluxo arrastando um nó ibmiot da seção de entrada para
+                    sua área de trabalho e, também, arrastando um nó de depuração da seção
+                    de saída para sua área de trabalho. Conecte os dois nós
+                        juntos.<br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img009.png" class="ibm-downsize" alt="" width="973" height="166"><p class="ibm-ind-link"><a class="ibm-popup-link" onclick="IBMCore.common.widget.overlay.show('N101FC');return false;" href="#N101FC">Clique para ver a imagem maior</a></p></li><li>Dê um clique duplo no nó do IBM IoT para configurá-lo. Especifique as
+                    informações de ID de autenticação e do dispositivo do serviço do
+                    IBM Cloud, que são aquelas escolhidas quando você registrou o smartphone
+                    no Watson IoT Platform. Em seguida, clique em Concluído.
+                        <br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img010.png" class="ibm-downsize" alt="" width="541" height="361"><p class="ibm-ind-link ibm-hide"><a class="ibm-popup-link" onclick="IBMCore.common.widget.overlay.show('N10205');return false;" href="#N10205">Clique para ver a imagem maior</a></p></li><li>Clique no botão <strong>Implementar</strong> na parte superior direita
+                    do editor de fluxo Node-RED. <br>O botão fica cinza quando o fluxo é
+                    implementado.</li><li>Selecione a guia de depuração para ver os dados do sensor de seu
+                    smartphone. <br>Se não puder ver a guia de depuração, poderá ser
+                    necessário estender a janela do navegador (ou rolar) para vê-la.
+                        <br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img011.png" class="ibm-downsize" alt="" width="408" height="633"><p class="ibm-ind-link ibm-hide"><a class="ibm-popup-link" onclick="IBMCore.common.widget.overlay.show('N10217');return false;" href="#N10217">Clique para ver a imagem maior</a></p></li></ol><p>Os dados de seu sensor são recebidos no formato JSON. O aplicativo IoT
+                Starter Mobile usa o protocolo MQTT para enviar os dados.</p><div class="dw-article-head-container"><div class="dw-article-step"><div class="dw-article-stepnum">6</div></div><div class="dw-article-h2"><h2 id="send-alert" class="ibm-h2">Envie um alerta quando seu smartphone
+                cair</h2></div></div><p>Agora iremos atualizar nosso fluxo Node-RED para usar os dados do
+                sensor.</p><p>Iremos executar as etapas a seguir:</p><ul class="ibm-bullet-list"><li>Extrair o valor "<strong>acceleration_y</strong>" da mensagem da carga
+                    útil JSON</li><li>Acionar um valor com relação a um valor de aceleração (tais como
+                        <strong>0,5</strong> para <strong>iOS</strong> e
+                        <strong>7</strong> para <strong>Android</strong>)</li><li>Depurar a mensagem de notificação</li><li>Opcionalmente, poste um tweet ou envie um e-mail</li></ul><p>Acesse seu editor de fluxo Node Red. Você criará o fluxo a seguir
+                arrastando os nós apropriados e vinculando-os conforme mostrado na figura
+                a seguir: <br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img012.png" class="ibm-downsize" alt="" width="1041" height="294"></p><p class="ibm-ind-link"><a class="ibm-popup-link" onclick="IBMCore.common.widget.overlay.show('N10245');return false;" href="#N10245">Clique para ver a imagem maior</a></p><p></p><ol type="1"><li> Para extrair o valor <code>acceleration_y</code> absoluto do
+                    smartphone a partir da mensagem da carga útil JSON, incluiremos e
+                    configuraremos um nó de função. Na seção de função da paleta, arraste
+                    um nó de função para sua área de trabalho. Dê um clique duplo no nó da
+                    função para configurá-lo com esses valores: <ol class="ibm-alpha-list" type="a"><li>Especifique <code>getAcceleration_y</code> como o nome para
+                            este nó.</li><li>Neste nó de função, copie e cole o código a seguir:
+                            <br><code>return
+                                {payload: Math.abs(msg.payload.d.acceleration_y)};</code></li><li>Clique em <strong>Concluído</strong>.</li></ol></li><li>Para criar um acionador no valor <code>acceleration_y</code> ,
+                    incluiremos e configuraremos um nó de comutação. Na seção da função da
+                    paleta, arraste um nó de comutação para sua área de trabalho. Conecte
+                    o nó de função ao nó de comutação. Dê um clique duplo no nó de
+                    comutação para configurá-lo com esses valores:<ol class="ibm-alpha-list" type="a"><li>Especifique <code>testAcceleration_y</code> como o nome para
+                            este nó.</li><li>Especifique <code>msg.payload</code> como a propriedade.</li><li>Na lista suspensa <strong>valor da condição</strong> ,
+                            selecione "&gt;=?" e especifique <code>0,5</code> para iOS ou
+                            <code>7</code> para Android.</li><li>Na última lista suspensa, selecione
+                            <code>parando após primeira
+                                correspondência</code>.</li><li>Clique em <strong>Concluído</strong>.</li></ol></li><li>Para definir a mensagem de notificação que você deseja enviar quando
+                    seu telefone estiver caindo, incluiremos e configuraremos um nó de
+                    modelo. Na seção de função da paleta, arraste um nó de modelo para sua
+                    área de trabalho. Conecte o nó de comutação ao nó de modelo. Dê um
+                    clique duplo no nó de modelo para configurá-lo com esses valores: <ol class="ibm-alpha-list" type="a"><li>Especifique <code>Acceleration_y_exceed_message</code> como o
+                            nome para este nó.</li><li>Especifique <code>msg.payload</code> como a propriedade.</li><li>Copie e cole o código a seguir no editor do nó:
+                            <br><code>Opa! Seu
+                                telefone está caindo? <br>Sua aceleração y =
+                            {{payload}}!</code></li><li>Clique em <strong>Concluído</strong>.</li></ol></li><li>Para limitar o número de mensagens para a notificação e evitar
+                    mensagens de notificação duplicadas, incluiremos e configuraremos um
+                    nó de atraso. Na seção de saída da função da paleta, arraste um nó de
+                    atraso para sua área de trabalho. Conecte o nó de modelo ao nó de
+                    atraso. Dê um clique duplo no nó de atraso para configurá-lo com esses
+                        valores:<ol class="ibm-alpha-list" type="a"><li>Especifique <code>Taxa Limite</code> como o nome para este
+                            nó.</li><li>Na lista suspensa <strong>Ação</strong> , especifique
+                            <code>Limitar taxa
+                                a</code>.
+                            Em seguida, configure a taxa como <code>1</code> e selecione
+                            <code>Minuto</code>.</li><li>Marque a caixa de seleção <strong>Arrastar mensagem
+                                intermediária</strong> .</li><li>Clique em <strong>Concluído</strong>.</li></ol></li><li>Para exibir a mensagem de notificação na guia Depuração de seu fluxo,
+                    incluiremos e configuraremos um nó de depuração. Na seção de função da
+                    paleta, arraste um nó de depuração para sua área de trabalho. Conecte
+                    o nó de atraso ao nó de depuração. </li><li>Para evitar o recebimento de muitas mensagens de depuração na guia
+                    Depurar, é possível ativar e desativar o nó de depuração clicando no
+                    retângulo verde no nó de depuração.<br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img013.png" class="ibm-downsize" alt="" width="396" height="81"><p class="ibm-ind-link ibm-hide"><a class="ibm-popup-link" onclick="IBMCore.common.widget.overlay.show('N102CC');return false;" href="#N102CC">Clique para ver a imagem maior</a></p><br>É exibida
+                    uma mensagem na parte superior de seu navegador explicando se o nó de
+                    depuração está ativado ou desativado.</li><li>Para testar seu aplicativo IBM Cloud (e seu fluxo Node-RED), conclua
+                    essas etapas:<ol class="ibm-alpha-list" type="a"><li>Clique em <strong>Implementar</strong> para reimplementar seu
+                            fluxo do Node-RED.</li><li>Em seu smartphone, execute o aplicativo IoT Mobile Starter e
+                            clique em <strong>Ativar Sensor</strong>.</li><li>Mova seu smartphone rapidamente para cima e para baixo para
+                            simular a queda.</li><li>Em seu editor de fluxo Node-RED, na guia Depurar, verifique se
+                            os valores <code>acceleration_y</code> estão sendo exibidos e
+                            se a mensagem de notificação também é exibida.
+                                <br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img014.png" class="ibm-downsize" alt="" width="323" height="110"><p class="ibm-ind-link ibm-hide"><a class="ibm-popup-link" onclick="IBMCore.common.widget.overlay.show('N102EA');return false;" href="#N102EA">Clique para ver a imagem maior</a></p></li></ol></li></ol><div class="dw-article-head-container"><div class="dw-article-step"><div class="dw-article-stepnum">6a</div></div><div class="dw-article-h3"><h3 id="notify-by-tweet" class="ibm-h3">Seja notificado por um tweet</h3></div></div><p>Se você tiver uma conta do Twitter, poderá enviar sua notificação como um
+                tweet.</p><ol type="1"><li>Em seu editor Node-RED, na seção social da paleta, arraste um nó de
+                    saída do twitter para sua área de trabalho. Vincule o nó de saída do
+                    twitter à saída do nó de atraso. <br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img015.png" class="ibm-downsize" alt="" width="794" height="195"><p class="ibm-ind-link"><a class="ibm-popup-link" onclick="IBMCore.common.widget.overlay.show('N102FE');return false;" href="#N102FE">Clique para ver a imagem maior</a></p></li><li>Dê um clique duplo no nó de saída do twitter para configurá-lo com
+                    esses valores: <ol class="ibm-alpha-list" type="a"><li>Na caixa de diálogo de saída do twitter, selecione o ícone de
+                            lápis próximo à lista suspensa <strong>ID do Twitter</strong>
+                            .</li><li>Na próxima caixa de diálogo, clique no botão para autenticar o
+                            Twitter. Na janela que é exibida, especifique suas credenciais
+                            do Twitter e autorize seu aplicativo IBM Cloud a usar sua conta
+                            do Twitter.</li><li>Clique em <strong>Incluir</strong> para incluir essa conta do
+                            Twitter.</li><li>Na caixa de diálogo de saída do twitter, certifique-se de que
+                            seu ID esteja selecionado. </li></ol></li><li>Clique em <strong>Implementar</strong> para testar esta nova versão de
+                    seu fluxo. Se seu botão <strong>Implementar</strong> estiver vermelho,
+                    significa que seu fluxo foi atualizado e precisa ser reimplementado.
+                    Se seu botão <strong>Implementar</strong> estiver cinza, significa que
+                    seu fluxo está implementado.</li><li>Para testar este método de notificação, conclua estas etapas:<ol class="ibm-alpha-list" type="a"><li>Em seu smartphone, certifique-se de que o aplicativo IoT
+                            Starter esteja em execução e clique em <strong>Ativar
+                                Sensor</strong>, se necessário.</li><li>Mova seu smartphone rapidamente para cima e para baixo para
+                            simular a queda.</li><li>Na guia Depurar, verifique se você vê os valores de aceleração
+                            e a mensagem de notificação.</li><li>Acesse seu aplicativo do Twitter e verifique se você vê o
+                            tweet com sua mensagem de notificação a partir de seu
+                            aplicativo IBM Cloud. <br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img016.png" class="ibm-downsize" alt="" width="388" height="253"><p class="ibm-ind-link ibm-hide"><a class="ibm-popup-link" onclick="IBMCore.common.widget.overlay.show('N10334');return false;" href="#N10334">Clique para ver a imagem maior</a></p></li></ol></li></ol><div class="dw-article-head-container"><div class="dw-article-step"><div class="dw-article-stepnum">6b</div></div><div class="dw-article-h3"><h3 id="notify-by-email" class="ibm-h3">Seja notificado por um e-mail</h3></div></div><p>Se você tiver uma conta de e-mail SMTP, poderá fazer com que o aplicativo
+                envie um e-mail com a notificação de que seu smartphone está caindo. Pode
+                ser necessário definir as configurações de segurança para seu e-mail para
+                permitir que seu aplicativo envie o e-mail. Por exemplo, se estiver usando
+                uma conta do Gmail, deverá ativar a opção <strong>Permitir aplicativos
+                    menos seguros</strong> nas configurações de <strong>Segurança de
+                    Conexão</strong> .</p><ol type="1"><li>Em seu editor Node-RED, na seção social da paleta, arraste um nó de
+                    saída do e-mail para sua área de trabalho. Vincule o nó de saída do
+                    e-mail à saída do nó de atraso. <br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img017.png" class="ibm-downsize" alt="" width="792" height="186"><p class="ibm-ind-link"><a class="ibm-popup-link" onclick="IBMCore.common.widget.overlay.show('N1034E');return false;" href="#N1034E">Clique para ver a imagem maior</a></p></li><li>Dê um clique duplo no nó de saída do e-mail para configurá-lo com
+                    esses valores: <ol class="ibm-alpha-list" type="a"><li>No campo <strong>Para</strong> , especifique seu endereço de
+                            e-mail.</li><li>No campo <strong>Servidor</strong> , especifique o endereço do
+                            servidor SMTP, como smtp.gmail.com.</li><li>No campo <strong>Porta</strong> , especifique a porta TCP SMTP
+                            que envia e-mail, como 465.</li><li>No campo <strong>ID do Usuário</strong> , especifique o nome
+                            do usuário a ser usado para autenticação no servidor SMTP.
+                            Este nome de usuário pode ser seu endereço de e-mail.</li><li>No campo <strong>Senha</strong> , especifique a senha que está
+                            associada ao seu nome de usuário.</li></ol></li><li>Para testar este método de notificação, conclua estas etapas:<ol class="ibm-alpha-list" type="a"><li>Em seu smartphone, certifique-se de que o aplicativo IoT
+                            Starter Mobile esteja em execução e clique em <strong>Ativar
+                                Sensor</strong>, se necessário.</li><li>Mova seu smartphone rapidamente para cima e para baixo para
+                            simular a queda.</li><li>Na guia Depurar, verifique se você vê os valores de aceleração
+                            e a mensagem de notificação.</li><li>Acesse seu aplicativo de e-mail e verifique se você vê o
+                            e-mail com sua mensagem de notificação a partir de seu
+                            aplicativo IBM Cloud. </li></ol></li></ol><div class="dw-article-head-container"><div class="dw-article-step"><div class="dw-article-stepnum">7</div></div><div class="dw-article-h2"><h2 id="send-cmd-smartphone" class="ibm-h2">Envie um comando ao seu smartphone</h2></div></div><p>Até agora, seu smartphone esteve agindo como um sensor. No entanto, é
+                possível usar o aplicativo IoT Starter Mobile para transformar seu
+                smartphone em um atuador fazendo com que seu smartphone receba e aja sobre
+                comandos.</p><p>O aplicativo IoT Starter Mobile pode gerenciar três tipos de eventos:</p><ul class="ibm-bullet-list"><li>eventos accel, para o acelerômetro</li><li>eventos touchmove, para o evento de deslizar os dedos em seu
+                    smartphone</li><li>eventos text, para os comandos de texto</li></ul><p>O aplicativo pode receber e agir sobre quatro comandos:</p><ul class="ibm-bullet-list"><li>light - Este comando liga ou desliga a luz em seu smartphone.</li><li>color - Este comando muda a cor de plano de fundo do aplicativo IoT
+                    Starter Mobile.</li><li>alert - Este comando exibe uma mensagem de alerta no aplicativo.</li><li>any text value - Este comando registra uma mensagem no
+                    aplicativo.</li></ul><div class="dw-article-head-container"><div class="dw-article-step"><div class="dw-article-stepnum">7a</div></div><div class="dw-article-h3"><h3 id="create-actuator-app" class="ibm-h3">Crie o aplicativo IoT Actuator no
+                Node-RED</h3></div></div><ol type="1"><li>Faça download do arquivo /flows/commands.json a partir do meu <a href="https://github.com/olympien13/watson-iot-actuator/tree/master/flows" target="_blank">projeto watson-iot-actuator do GitHub</a> para seu
+                    computador.</li><li>Abra o arquivo commands.json em um editor de texto e certifique-se de
+                    que todo o código esteja em uma única linha. Remova qualquer quebra de
+                    linha, se necessário. Copie a linha do código.</li><li>Em seu editor Node-RED, crie um novo fluxo para sua área de trabalho
+                    clicando no ícone de mais.</li><li>Pressione <strong>Ctrl+I</strong> para abrir a caixa de diálogo
+                    Importar Nós. Cole a linha de código e clique em
+                        <strong>Importar</strong>. O fluxo a seguir é exibido em sua área
+                    de trabalho: <br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img018.png" class="ibm-downsize" alt="" width="1075" height="447"><p class="ibm-ind-link"><a class="ibm-popup-link" onclick="IBMCore.common.widget.overlay.show('N103BF');return false;" href="#N103BF">Clique para ver a imagem maior</a></p></li><li>Para customizar este fluxo para seu aplicativo IoT Actuator, é
+                    necessário configurar os nós conforme descrito abaixo:<ol class="ibm-alpha-list" type="a"><li>Dê um clique duplo no nó Entrada do Aplicativo IoT e
+                            especifique o ID do smartphone que você usou quando registrou
+                            seu smartphone. Clique em <strong>Concluído</strong>.</li><li>Dê um clique duplo no nó Saída do Aplicativo IoT e especifique
+                            o ID do smartphone e o tipo de smartphone (iPhone ou Android).
+                            Clique em <strong>Concluído</strong>.</li></ol></li><li>Clique em <strong>Implementar</strong>.</li></ol><div class="dw-article-head-container"><div class="dw-article-step"><div class="dw-article-stepnum">7b</div></div><div class="dw-article-h3"><h3 id="test-cmd-smartphone" class="ibm-h3">Teste os comandos em seu smartphone</h3></div></div><ol type="1"><li>Em seu smartphone, certifique-se de que o aplicativo IoT Starter
+                    Mobile esteja em execução e clique em <strong>Ativar Sensor</strong>,
+                    se necessário.</li><li>Movimente seu smartphone; vire-o e incline-o. A cor de plano de fundo
+                    do aplicativo em seu telefone muda de cores. Seu smartphone está
+                    recebendo o evento <code>accel</code> .</li><li>Em seu smartphone móvel com o aplicativo IoT Starter Mobile no
+                    primeiro plano, deslize o dedo para a esquerda e para a direita na
+                    tela. Verifique a guia Log em seu aplicativo. Duas mensagens foram
+                    registradas. Seu smartphone está recebendo o evento
+                    <code>touchmove</code> . <br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img019.png" class="ibm-downsize" alt="" width="233" height="394"></li><li>Em seu smartphone, volte para a guia IoT. Clique no botão
+                        <strong>Enviar Texto</strong> . Digite qualquer valor de texto e
+                    clique no botão <strong>Enviar</strong> .
+                        <br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img020.png" class="ibm-downsize" alt="" width="233" height="394"></li><li>Novamente, verifique a guia Log para ver se as duas mensagens foram
+                    registradas. Seu smartphone está recebendo o evento <code>text</code>
+                        .<br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img021.png" class="ibm-downsize" alt="" width="233" height="394"></li><li>Em seu smartphone, volte para a guia IoT. Clique no botão
+                        <strong>Enviar Texto</strong> . Digite <code>alerta</code> no
+                    campo e clique no botão <strong>Enviar</strong> . Uma caixa pop-up
+                    exibe um alerta. Seu smartphone está recebendo o evento
+                    <code>alert</code> .<br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img022.png" class="ibm-downsize" alt="" width="233" height="394"></li><li>Em seu smartphone, volte para a guia IoT. Clique no botão
+                        <strong>Enviar Texto</strong> . Digite <code>luz</code> no campo e
+                    clique no botão <strong>Enviar</strong> . A luz em seu smartphone é
+                    ativada; este comando pode não funcionar em todos os smartphones
+                    Android, mas funciona em todos os smartphones iOS. Seu smartphone está
+                    recebendo o evento <code>light</code> . É possível clicar em
+                        <strong>Enviar Texto</strong> novamente, digitar <code>luz</code>
+                    e a luz será desligada.</li></ol><p>Na próxima etapa, criaremos um aplicativo IoT que combina as ideias de seu
+                smartphone ser um sensor e um atuador.</p><div class="dw-article-head-container"><div class="dw-article-step"><div class="dw-article-stepnum">8</div></div><div class="dw-article-h2"><h2 id="iot-app-sensor-and-actuator" class="ibm-h2">Acenda e
+                apague a luz de seu smartphone ao virá-lo horizontalmente</h2></div></div><div class="dw-article-sidebar ibm-background-cool-white-20"><p>O comando <code>light</code> é bem interpretado por alguns smartphones
+                    Android, mas não por todos os smartphones Android. Uma solução
+                    alternativa é usar o comando <code>color</code> . O código para ambas
+                    as soluções é fornecido.</p></div><p>Agora que você viu como transformar seu smartphone em um sensor ou um
+                atuador, vamos criar um aplicativo IoT que transforme seu smartphone em
+                ambos! Neste cenário, acenderemos/apagaremos a luz de seu smartphone cada
+                vez que você virá-lo horizontalmente. </p><p> Testaremos o valor da aceleração Z do smartphone para verificar se este
+                valor é positivo ou negativo e salvaremos o estado. </p><ul class="ibm-bullet-list"><li>Se a aceleração Z for positiva e, se a luz estiver desligada, envie o
+                    comando <code>light</code> ao telefone para acender a luz. </li><li>Se a aceleração Z for negativa e, se a luz estiver ligada, envie o
+                    comando <code>light</code> ao telefone para apagar a luz.</li></ul><ol type="1"><li> Acesse seu editor de fluxo Node Red. Você criará o fluxo a seguir
+                    arrastando os nós apropriados e vinculando-os conforme mostrado
+                    abaixo: <br><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img023.png" class="ibm-downsize" alt="" width="898" height="410"><p class="ibm-ind-link"><a class="ibm-popup-link" onclick="IBMCore.common.widget.overlay.show('N10469');return false;" href="#N10469">Clique para ver a imagem maior</a></p></li><li>Na seção de função da paleta, arraste um nó de função para sua área de trabalho.<ol><li>Especifique um nome para este nó de função. Por exemplo,
+                            nomeie-o como <code>Detectar Inversão</code>.</li><li>Recorte e cole o código a seguir no editor do nó da função:
+                                <div class="ibm-syntax-container"><div><div id="highlighter_475174" class="syntaxhighlighter  htmlscript"><table role="none" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="htmlscript plain">var accelerationZ = msg.payload.d.acceleration_z;</code></div><div class="line number2 index1 alt1"><code class="htmlscript plain">var isAlreadySwitchedOn = context.get('isAlreadySwitchedOn')|| false;</code></div><div class="line number3 index2 alt2">&nbsp;</div><div class="line number4 index3 alt1"><code class="htmlscript plain">// For Android reverse this test !!!</code></div><div class="line number5 index4 alt2"><code class="htmlscript plain">if (accelerationZ &gt; 0) {</code></div><div class="line number6 index5 alt1"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">if (!isAlreadySwitchedOn) {</code></div><div class="line number7 index6 alt2"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">isAlreadySwitchedOn = true;</code></div><div class="line number8 index7 alt1"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">msg.eventOrCommandType = "light";</code></div><div class="line number9 index8 alt2"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">msg.payload = JSON.stringify({"d":{"text":"Received light on message"}});</code></div><div class="line number10 index9 alt1"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">}</code></div><div class="line number11 index10 alt2"><code class="htmlscript plain">} else {</code></div><div class="line number12 index11 alt1"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">if (isAlreadySwitchedOn) {</code></div><div class="line number13 index12 alt2"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">isAlreadySwitchedOn = false;</code></div><div class="line number14 index13 alt1"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">msg.eventOrCommandType = "light";</code></div><div class="line number15 index14 alt2"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">msg.payload = JSON.stringify({"d":{"text":"Received light off message"}});</code></div><div class="line number16 index15 alt1"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">}</code></div><div class="line number17 index16 alt2"><code class="htmlscript plain">}</code></div><div class="line number18 index17 alt1"><code class="htmlscript plain">context.set('isAlreadySwitchedOn', isAlreadySwitchedOn);</code></div><div class="line number19 index18 alt2"><code class="htmlscript plain">return msg;</code></div></div></td></tr></tbody></table></div></div></div></li><li>Clique em <strong>Concluído</strong>.</li></ol></li><li>Arraste um nó de comutação para sua área de trabalho. Este nó testará
+                    se precisaremos enviar um comando ao telefone. Preencha os campos com
+                    esses valores: <ol><li>Especifique um nome para este nó de <code>comutação</code> .
+                            Por exemplo, nomeie-o como
+                            <code>Inversão Detectada</code>.</li><li>Configure a Propriedade como
+                            <code>msg.eventOrCommandType</code>.</li><li>Selecione <code>não é nulo</code> na lista suspensa.</li><li>Selecione <code>parando após a primeira correspondência</code>
+                            na lista suspensa inferior.</li><li>Clique em <strong>Concluído</strong>.</li></ol></li><li>Arraste um nó de saída ibmiot para sua área de trabalho. Este nó
+                    enviará o comando <code>light</code> ao telefone. Preencha os campos
+                    com esses valores: <ol><li>Especifique um nome para este nó. Por exemplo, nomeie-o como
+                            <code>IBM
+                                IoT Out</code>.</li><li>Selecione <code>Serviço do IBM Cloud</code> na lista suspensa
+                                <strong>Autenticação</strong> .</li><li>Selecione <code>Comando do Smartphone</code> na lista suspensa
+                                <strong>Tipo de Saída</strong> .</li><li>Insira o tipo de seu smartphone (iPhone ou Android).</li><li>Insira o ID de seu smartphone.</li><li>Insira <code>text</code> na caixa de texto <strong>Tipo de
+                                Comando</strong>. . </li><li>Especifique <code>json</code> na caixa de texto
+                                <strong>Formato</strong> .</li><li>Na caixa <strong>Dados</strong> , digite esta cadeia de
+                            caractere:<br><code>{"d":{"value":"text"}}</code></li><li>Clique em <strong>Concluído</strong>.</li></ol></li><li>Implemente seu novo fluxo. Segure seu telefone e execute o aplicativo
+                    IoT Starter Mobile clicando em <strong>Ativar Sensor</strong>. <ol><li>Observe a guia Depurar em seu fluxo Node-Red para ver as
+                            mensagens MQTT recebidas a partir do telefone.</li><li>Vire seu telefone horizontalmente e verifique se a luz está
+                            ACESA.</li><li>Vire-o de volta e verifique se a luz está APAGADA.</li></ol></li></ol><p>Se seu smartphone Android não interpretar o comando <code>light</code>
+                corretamente, será possível substituir o código no nó da função pelo
+                código a seguir. Ele fornece uma solução alternativa que usa o comando
+                <code>color</code> que mudará a cor de plano de fundo do aplicativo IoT
+                Starter Mobile toda vez que você o virar horizontalmente em vez de acender
+                ou apagar a luz de seu smartphone.</p><div class="ibm-syntax-container"><div><div id="highlighter_600899" class="syntaxhighlighter  htmlscript"><table role="none" cellspacing="0" cellpadding="0" border="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div><div class="line number11 index10 alt2">11</div><div class="line number12 index11 alt1">12</div><div class="line number13 index12 alt2">13</div><div class="line number14 index13 alt1">14</div><div class="line number15 index14 alt2">15</div><div class="line number16 index15 alt1">16</div><div class="line number17 index16 alt2">17</div><div class="line number18 index17 alt1">18</div><div class="line number19 index18 alt2">19</div><div class="line number20 index19 alt1">20</div><div class="line number21 index20 alt2">21</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="htmlscript plain">var accelerationZ = msg.payload.d.acceleration_z;</code></div><div class="line number2 index1 alt1"><code class="htmlscript plain">var r = 0.0;</code></div><div class="line number3 index2 alt2"><code class="htmlscript plain">var b = 0.0;</code></div><div class="line number4 index3 alt1"><code class="htmlscript plain">var g = 0.0;</code></div><div class="line number5 index4 alt2"><code class="htmlscript plain">a = 1.0;</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2">&nbsp;</div><div class="line number8 index7 alt1"><code class="htmlscript plain">if (accelerationZ &lt; 0) {</code></div><div class="line number9 index8 alt2"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">// green</code></div><div class="line number10 index9 alt1"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">r = 102.0;</code></div><div class="line number11 index10 alt2"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">g = 255.0;</code></div><div class="line number12 index11 alt1"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">b = 102.0;</code></div><div class="line number13 index12 alt2"><code class="htmlscript plain">} else {</code></div><div class="line number14 index13 alt1"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">// purple</code></div><div class="line number15 index14 alt2"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">r = 178.0;</code></div><div class="line number16 index15 alt1"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">g = 102.0;</code></div><div class="line number17 index16 alt2"><code class="htmlscript spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="htmlscript plain">b = 255.0;</code></div><div class="line number18 index17 alt1"><code class="htmlscript plain">}</code></div><div class="line number19 index18 alt2"><code class="htmlscript plain">msg.eventOrCommandType = "color";</code></div><div class="line number20 index19 alt1"><code class="htmlscript plain">msg.payload = JSON.stringify({"d":{"r":r,"b":b,"g":g,"alpha":a}});</code></div><div class="line number21 index20 alt2"><code class="htmlscript plain">return msg;</code></div></div></td></tr></tbody></table></div></div></div><h2 id="conclusion" class="ibm-h2">Conclusão</h2><p>Neste tutorial, você aprendeu como criar e implementar facilmente
+                aplicativos de IoT, como transformar facilmente seu smartphone em um
+                dispositivo sensor e atuador, como conectá-lo facilmente ao IBM Watson IoT
+                Platform e como enviar e receber dados de seu smartphone.</p><p>Usando o IBM Cloud Platform e o Watson IoT Platform, é possível acelerar
+                seu tempo de desenvolvimento e seu prazo para lançamento no mercado. As
+                organizações podem conectar seus dispositivos facilmente (seus próprios
+                conjuntos de sensores ou atuadores ou ambos), construir aplicativos IoT,
+                resolver problemas de negócios específicos e transformar suas empresas e
+                mercados.</p><!--CMA ID: 1041574--><!--Site ID: 80--><!--XSLT stylesheet used to transform this file:
+        dw-document-html-8.0.xsl-->
+                                        <!-- Article Quiz -->
+                                        
+                                        <!-- Article Resources -->
+                                        <div class="ibm-alternate-rule"><hr></div><h4 id="artdownload" class="ibm-h4">Recursos para download</h4><ul class="ibm-link-list"><li><a class="ibm-document-link" href="https://www.ibm.com/developerworks/br/library/iot-smartphone-sensor-actuator-bluemix-apps-trs/iot-smartphone-sensor-actuator-bluemix-apps-trs-pdf.pdf">PDF desse conteúdo</a></li></ul>
+                                        <!-- Commenting -->
+<!-- INLINE_COMMENTS_BEGIN: -->
+<div class="ibm-alternate-rule"><hr></div>
+<div id="dw-article-cmts-top" class="ibm-columns">
+    <div class="ibm-col-6-2">
+        <h4 id="icomments" class="ibm-h4">Comentários</h4>
+        <div id="dw-article-cmts-login">
+            <p><a onclick="window.location=userLinks[0].url;" tabindex="0" role="link">Acesse</a> ou 
+                <a onclick="window.location=userLinks[1].url;" tabindex="0" role="link">registre-se</a> para adicionar e acompanhar os comentários.</p>
+        </div>
+    </div>    
+    <div class="ibm-col-6-2" id="dw-notify"> 
+        <input type="checkbox" value="1" name="comment_notification" id="comment_notification" disabled="disabled">
+        <label for="comment_notification" style="color: rgb(204, 204, 204);">Receba notificações dos comentários</label>	   
+    </div>
+</div>
+
+<div class="dw-article-cmts-container">       
+    <div class="ibm-no-print jquery-comments read-only" id="dw-icomments-container"><div class="commenting-field main"><img src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/user-icon.png" alt="" class="profile-picture round by-current-user"><div class="textarea-wrapper"><span class="close" style="display: none;"><span class="left"></span><span class="right"></span></span><div class="textarea" data-placeholder="Incluir comentário" style="height: 3.65em;" contenteditable="true"></div><div class="control-row" style="display: none;"><span class="send save highlight-background">Postar</span></div></div></div><ul class="navigation"><div class="navigation-wrapper"><li data-sort-key="newest" data-container-name="comments" class="active">Mais Recentes</li><li data-sort-key="oldest" data-container-name="comments">Mais Antigos</li><li data-sort-key="popularity" data-container-name="comments">Mais Populares</li></div><div class="navigation-wrapper responsive"><li class="title active"><header>Mais Recentes</header></li><ul class="dropdown"><li data-sort-key="newest" data-container-name="comments" class="active">Mais Recentes</li><li data-sort-key="oldest" data-container-name="comments">Mais Antigos</li><li data-sort-key="popularity" data-container-name="comments">Mais Populares</li></ul></div></ul><div class="data-container" data-container="comments"><ul id="comment-list" class="main"></ul><div class="no-comments no-data"><i class="fa fa-comments fa-2x"></i><br>Nenhum comentário postado para esse artigo</div></div></div>
+</div>
+<!-- INLINE_COMMENTS_END -->                                        <!-- CENTER_6_4_CONTENT_COLUMN_END -->
+                                    </div>   
+                                </div>
+                        <!--Rating_Meta_BEGIN--><div class="metavalue">static.content.url=http://www.ibm.com/developerworks/js/artrating/</div><div class="metavalue">SITE_ID=80</div><div class="metavalue">Zone=Internet of Things</div><div class="metavalue">ArticleID=1041574</div><div class="metavalue">ArticleTitle=Transforme seu smartphone em um sensor e em um atuador</div><div class="metavalue">publish-date=12262016</div><script language="javascript" type="text/javascript">document.write('<div class="metavalue">url='+location.href.replace(/</g,  '%3C')+'</div>');</script><div class="metavalue">url=https://www.ibm.com/developerworks/br/library/iot-smartphone-sensor-actuator-bluemix-apps-trs/index.html</div><!--Rating_Meta_END-->
+                    </div>
+                    <!-- END_IBM-CONTENT-MAIN -->
+                </div>
+                <!-- END_IBM-CONTENT-BODY -->
+            </div>
+            <!-- END_IBM-CONTENT -->
+        </div>
+        <!-- END_IBM-PCON -->
+    </main>
+    <!-- MAIN_CONTENT_END -->
+    
+    <!-- END_CONTENT-WRAPPER -->	
+</div>
+<!-- FOOTER_BEGIN -->
+<footer role="contentinfo" aria-label="IBM Developer">
+    <div id="dw-footer-module" class="dw-footer-home ibmdeveloper">
+        <section aria-label="Recursos" role="contentinfo">
+            <div class="ibm-columns">
+                <div class="ibm-col-6-1 dw-footer-col-1">
+                    <ul>
+                        <li class="dw-footer-heading" aria-label="IBM Developer"><a href="https://www.ibm.com/developerworks/br/">IBM <b>Developer</b></a></li>
+                        <li><a href="https://www.ibm.com/developerworks/secure/feedback.jsp?domain=dwbrazil">Ajuda</a></li>
+                        <li class="dw-footer-newline"><a href="https://www.ibm.com/developerworks/secure/report/?lang=pt_br">Relatar abuso</a></li>
+                        <li class="dw-footer-newline"><a href="https://www.ibm.com/developerworks/br/community/terms/thirdparty/">Aviso de termos legais de terceiros&nbsp;/ parceiros</a></li>
+                    </ul>
+                    <ul>
+                        <li class="dw-footer-heading dw-follow-us" aria-label="Nos siga!">Nos siga!</li>
+                    </ul>
+                    <p class="dw-footer-social">
+                        <a href="https://www.twitter.com/IBMDeveloper">
+                            <img alt="Twitter" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/dw-footer-icon-twitter.png" width="28" height="27">
+                        </a>
+                    </p>
+                    <p class="dw-footer-social-right">
+                        <a href="https://www.facebook.com/IBMDeveloper">
+                            <img alt="Facebook" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/dw-footer-icon-facebook.png" width="28" height="27">
+                        </a>
+                    </p>
+                    <br>
+                    <p class="dw-footer-social">
+                        <a href="https://www.youtube.com/ibmbrasil/">
+                            <img alt="YouTube" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/dw-footer-icon-youtube.png" width="28" height="27">
+                        </a>
+                    </p>
+                </div>
+                <div class="ibm-col-6-1 dw-footer-col-2 alt-height">
+                    <ul>
+                        <li class="dw-footer-heading" aria-label="Conheça">Conheça</li>
+                        <li class="dw-footer-newline"><a href="https://onthehub.com/ibm/">Programa Acadêmico da IBM (em inglês)</a></li>
+                        <li class="dw-footer-newline"><a href="https://developer.ibm.com/startups/">Programa IBM de apoio a startups (em inglês)</a></li>
+                        <li class="dw-footer-newline"><a href="https://developer.ibm.com/br/">Jornadas de aprendizado</a></li>
+                    </ul>
+                    <ul class="dw-footer-lang" aria-label="Seleccione un idioma">
+                        <li class="dw-footer-heading dw-footer-newline">Selecione um idioma</li>
+                        <li><a href="https://developer.ibm.com/">English</a></li>
+                        <li><a href="https://www.ibm.com/developerworks/cn/" lang="zh">中文</a></li>
+                        <li><a href="https://www.ibm.com/developerworks/jp/" lang="ja">日本語</a></li>
+                        <li><a href="https://www.ibm.com/developerworks/ru/" lang="ru">Русский</a></li>
+                        <li class="dw-footer-newline"><a href="https://www.ibm.com/developerworks/br/" lang="pt">Português (Brasil)</a></li>
+                        <li><a href="https://www.ibm.com/developerworks/ssa/" lang="es">Español</a></li>
+                        <li><a href="https://developer.ibm.com/kr/" lang="kr">한글</a></li>
+                    </ul>
+                </div>
+                <div class="ibm-col-6-1 dw-footer-col-3"> </div>
+                <div class="ibm-col-6-1 dw-footer-col-4"> </div>
+                <div class="ibm-col-6-1 dw-footer-col-5">
+                    <ul class="dw-footer-categories">
+                        <li class="dw-footer-category">
+                            <a href="https://www.ibm.com/developerworks/br/downloads/">Downloads e trials</a>  
+                        </li>
+                        <li class="dw-footer-category">
+                            <a href="https://www.ibm.com/developerworks/br/rss/">Feeds RSS</a>  
+                        </li>
+                    </ul>
+                </div>
+                <div class="ibm-col-6-1 dw-footer-col-6">
+                    <ul class="dw-footer-categories">
+                        <li class="dw-footer-category">
+                            <a href="https://www.ibm.com/developerworks/br/views/global/libraryview.jsp">Tutoriais &amp; treinamentos</a>
+                        </li>
+                        <li class="dw-footer-category">
+                            <a href="https://developer.ibm.com/newsletters/">Newsletters (em inglês)</a>  
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div id="dw-footer" class="ibm-padding-normal ibm-alternate">
+        <div class="ibm-columns">
+            <div class="ibm-col-1-1">
+                <div class="dw-footer-corporate-links">
+                    <ul>
+                        <li><a href="https://www.ibm.com/contact/br/pt/">Contato</a></li>
+                        <li><a href="https://www.ibm.com/privacy/br/pt/">Privacidade</a></li>
+                        <li><a href="https://www.ibm.com/developerworks/br/community/terms/use/">Termos de uso</a></li>
+                        <li><a href="https://www.ibm.com/accessibility/br/pt/">Acessibilidade</a></li>
+                        <li class="ibm-feedbacklink"><a href="#">Feedback</a></li>
+                        <li id="ibm-truste-cp"><a onclick="truste.eu.clickListener();return false;" href="#">Preferências de cookies</a></li>
+                    </ul>                 
+                </div>
+                <div id="ibm-footer-locale-selector"><h3 class="ibm-bold">Selecione um país/região</h3><select class="ibm-fullwidth select2-hidden-accessible ibm-widget-processed" aria-label="Select a country/region" style="width: 412.617px;" tabindex="-1" aria-hidden="true"><optgroup label="Páginas daibm.com no mundo inteiro"><option data-localecode="pt-br" value="http://www.ibm.com/br-pt/?lnk=fcc" selected="selected">Brazil - Portuguese</option><option data-localecode="en-af" value="http://www.ibm.com/af-en/?lnk=fcc">Afghanistan - English</option><option data-localecode="fr-dz" value="http://www.ibm.com/dz-fr/?lnk=fcc">Algeria - French</option><option data-localecode="pt-ao" value="http://www.ibm.com/ao-pt/?lnk=fcc">Angola - Portuguese</option><option data-localecode="en-ai" value="http://www.ibm.com/ai-en/?lnk=fcc">Anguilla - English</option><option data-localecode="en-ag" value="http://www.ibm.com/ag-en/?lnk=fcc">Antigua and Barbuda - English</option><option data-localecode="es-ar" value="http://www.ibm.com/ar-es/?lnk=fcc">Argentina - Spanish</option><option data-localecode="en-aw" value="http://www.ibm.com/aw-en/?lnk=fcc">Aruba - English</option><option data-localecode="en-au" value="http://www.ibm.com/au-en/?lnk=fcc">Australia - English</option><option data-localecode="de-at" value="http://www.ibm.com/at-de/?lnk=fcc">Austria - German</option><option data-localecode="en-bs" value="http://www.ibm.com/bs-en/?lnk=fcc">Bahamas - English</option><option data-localecode="en-bh" value="http://www.ibm.com/bh-en/?lnk=fcc">Bahrain - English</option><option data-localecode="en-bd" value="http://www.ibm.com/bd-en/?lnk=fcc">Bangladesh - English</option><option data-localecode="en-bb" value="http://www.ibm.com/bb-en/?lnk=fcc">Barbados - English</option><option data-localecode="nl-be" value="http://www.ibm.com/be-nl/?lnk=fcc">Belgium/Luxembourg - Dutch</option><option data-localecode="en-be" value="http://www.ibm.com/be-en/?lnk=fcc">Belgium/Luxembourg - English</option><option data-localecode="fr-be" value="http://www.ibm.com/be-fr/?lnk=fcc">Belgium/Luxembourg - French</option><option data-localecode="en-bm" value="http://www.ibm.com/bm-en/?lnk=fcc">Bermuda - English</option><option data-localecode="es-bo" value="http://www.ibm.com/bo-es/?lnk=fcc">Bolivia - Spanish</option><option data-localecode="en-bw" value="http://www.ibm.com/bw-en/?lnk=fcc">Botswana - English</option><option data-localecode="en-bn" value="http://www.ibm.com/bn-en/?lnk=fcc">Brunei Darussalam - English</option><option data-localecode="bg-bg" value="http://www.ibm.com/bg-bg/?lnk=fcc">Bulgaria - Bulgarian</option><option data-localecode="en-bg" value="http://www.ibm.com/bg-en/?lnk=fcc">Bulgaria - English</option><option data-localecode="fr-bf" value="http://www.ibm.com/bf-fr/?lnk=fcc">Burkina Faso - French</option><option data-localecode="en-kh" value="http://www.ibm.com/kh-en/?lnk=fcc">Cambodia - English</option><option data-localecode="en-cm" value="http://www.ibm.com/cm-en/?lnk=fcc">Cameroon - English</option><option data-localecode="fr-cm" value="http://www.ibm.com/cm-fr/?lnk=fcc">Cameroon - French</option><option data-localecode="en-ca" value="http://www.ibm.com/ca-en/?lnk=fcc">Canada - English</option><option data-localecode="fr-ca" value="http://www.ibm.com/ca-fr/?lnk=fcc">Canada - French</option><option data-localecode="en-ky" value="http://www.ibm.com/ky-en/?lnk=fcc">Cayman Islands - English</option><option data-localecode="fr-td" value="http://www.ibm.com/td-fr/?lnk=fcc">Chad - French</option><option data-localecode="es-cl" value="http://www.ibm.com/cl-es/?lnk=fcc">Chile - Spanish</option><option data-localecode="zh-cn" value="http://www.ibm.com/cn-zh/?lnk=fcc">China - Chinese (Simplified)</option><option data-localecode="es-co" value="http://www.ibm.com/co-es/?lnk=fcc">Colombia - Spanish</option><option data-localecode="fr-cg" value="http://www.ibm.com/cg-fr/?lnk=fcc">Congo - French</option><option data-localecode="fr-cd" value="http://www.ibm.com/cd-fr/?lnk=fcc">Congo, The Democratic Republic of the - French</option><option data-localecode="es-cr" value="http://www.ibm.com/cr-es/?lnk=fcc">Costa Rica - Spanish</option><option data-localecode="hr-hr" value="http://www.ibm.com/hr-hr/?lnk=fcc">Croatia - Croatian</option><option data-localecode="en-hr" value="http://www.ibm.com/hr-en/?lnk=fcc">Croatia - English</option><option data-localecode="en-cw" value="http://www.ibm.com/cw-en/?lnk=fcc">Curacao - English</option><option data-localecode="en-cy" value="http://www.ibm.com/cy-en/?lnk=fcc">Cyprus - English</option><option data-localecode="cs-cz" value="http://www.ibm.com/cz-cs/?lnk=fcc">Czech Republic - Czech</option><option data-localecode="en-cz" value="http://www.ibm.com/cz-en/?lnk=fcc">Czech Republic - English</option><option data-localecode="da-dk" value="http://www.ibm.com/dk-da/?lnk=fcc">Denmark - Danish</option><option data-localecode="en-dk" value="http://www.ibm.com/dk-en/?lnk=fcc">Denmark - English</option><option data-localecode="en-dm" value="http://www.ibm.com/dm-en/?lnk=fcc">Dominica - English</option><option data-localecode="es-ec" value="http://www.ibm.com/ec-es/?lnk=fcc">Ecuador - Spanish</option><option data-localecode="en-eg" value="http://www.ibm.com/eg-en/?lnk=fcc">Egypt - English</option><option data-localecode="en-ee" value="http://www.ibm.com/ee-en/?lnk=fcc">Estonia - English</option><option data-localecode="et-ee" value="http://www.ibm.com/ee-et/?lnk=fcc">Estonia - Estonian</option><option data-localecode="en-et" value="http://www.ibm.com/et-en/?lnk=fcc">Ethiopia - English</option><option data-localecode="en-fi" value="http://www.ibm.com/fi-en/?lnk=fcc">Finland - English</option><option data-localecode="fi-fi" value="http://www.ibm.com/fi-fi/?lnk=fcc">Finland - Finnish</option><option data-localecode="fr-fr" value="http://www.ibm.com/fr-fr/?lnk=fcc">France - French</option><option data-localecode="fr-ga" value="http://www.ibm.com/ga-fr/?lnk=fcc">Gabon - French</option><option data-localecode="de-de" value="http://www.ibm.com/de-de/?lnk=fcc">Germany - German</option><option data-localecode="en-gh" value="http://www.ibm.com/gh-en/?lnk=fcc">Ghana - English</option><option data-localecode="en-gr" value="http://www.ibm.com/gr-en/?lnk=fcc">Greece - English</option><option data-localecode="el-gr" value="http://www.ibm.com/gr-el/?lnk=fcc">Greece - Greek</option><option data-localecode="en-gd" value="http://www.ibm.com/gd-en/?lnk=fcc">Grenada - English</option><option data-localecode="en-gy" value="http://www.ibm.com/gy-en/?lnk=fcc">Guyana - English</option><option data-localecode="en-hk" value="http://www.ibm.com/hk-en/?lnk=fcc">Hong Kong S.A.R. of China - English</option><option data-localecode="en-hu" value="http://www.ibm.com/hu-en/?lnk=fcc">Hungary - English</option><option data-localecode="hu-hu" value="http://www.ibm.com/hu-hu/?lnk=fcc">Hungary - Hungarian</option><option data-localecode="en-in" value="http://www.ibm.com/in-en/?lnk=fcc">India - English</option><option data-localecode="en-id" value="http://www.ibm.com/id-en/?lnk=fcc">Indonesia - English</option><option data-localecode="en-iq" value="http://www.ibm.com/iq-en/?lnk=fcc">Iraq - English</option><option data-localecode="en-ie" value="http://www.ibm.com/ie-en/?lnk=fcc">Ireland - English</option><option data-localecode="en-il" value="http://www.ibm.com/il-en/?lnk=fcc">Israel - English</option><option data-localecode="he-il" value="http://www.ibm.com/il-he/?lnk=fcc">Israel - Hebrew</option><option data-localecode="it-it" value="http://www.ibm.com/it-it/?lnk=fcc">Italy - Italian</option><option data-localecode="fr-ci" value="http://www.ibm.com/ci-fr/?lnk=fcc">Ivory Coast - French</option><option data-localecode="en-jm" value="http://www.ibm.com/jm-en/?lnk=fcc">Jamaica - English</option><option data-localecode="ja-jp" value="http://www.ibm.com/jp-ja/?lnk=fcc">Japan - Japanese</option><option data-localecode="en-jo" value="http://www.ibm.com/jo-en/?lnk=fcc">Jordan - English</option><option data-localecode="en-kz" value="http://www.ibm.com/kz-en/?lnk=fcc">Kazakhstan - English</option><option data-localecode="kk-kz" value="http://www.ibm.com/kz-kk/?lnk=fcc">Kazakhstan - Kazakh</option><option data-localecode="en-ke" value="http://www.ibm.com/ke-en/?lnk=fcc">Kenya - English</option><option data-localecode="ko-kr" value="http://www.ibm.com/kr-ko/?lnk=fcc">Korea, Republic of - Korean</option><option data-localecode="en-kw" value="http://www.ibm.com/kw-en/?lnk=fcc">Kuwait - English</option><option data-localecode="en-lv" value="http://www.ibm.com/lv-en/?lnk=fcc">Latvia - English</option><option data-localecode="lv-lv" value="http://www.ibm.com/lv-lv/?lnk=fcc">Latvia - Latvian</option><option data-localecode="en-lb" value="http://www.ibm.com/lb-en/?lnk=fcc">Lebanon - English</option><option data-localecode="en-ly" value="http://www.ibm.com/ly-en/?lnk=fcc">Libya - English</option><option data-localecode="en-lt" value="http://www.ibm.com/lt-en/?lnk=fcc">Lithuania - English</option><option data-localecode="lt-lt" value="http://www.ibm.com/lt-lt/?lnk=fcc">Lithuania - Lithuanian</option><option data-localecode="fr-mg" value="http://www.ibm.com/mg-fr/?lnk=fcc">Madagascar - French</option><option data-localecode="en-mw" value="http://www.ibm.com/mw-en/?lnk=fcc">Malawi - English</option><option data-localecode="en-my" value="http://www.ibm.com/my-en/?lnk=fcc">Malaysia - English</option><option data-localecode="en-mu" value="http://www.ibm.com/mu-en/?lnk=fcc">Mauritius - English</option><option data-localecode="fr-mu" value="http://www.ibm.com/mu-fr/?lnk=fcc">Mauritius - French</option><option data-localecode="es-mx" value="http://www.ibm.com/mx-es/?lnk=fcc">Mexico - Spanish</option><option data-localecode="en-ms" value="http://www.ibm.com/ms-en/?lnk=fcc">Montserrat - English</option><option data-localecode="fr-ma" value="http://www.ibm.com/ma-fr/?lnk=fcc">Morocco - French</option><option data-localecode="pt-mz" value="http://www.ibm.com/mz-pt/?lnk=fcc">Mozambique - Portuguese</option><option data-localecode="en-na" value="http://www.ibm.com/na-en/?lnk=fcc">Namibia - English</option><option data-localecode="en-np" value="http://www.ibm.com/np-en/?lnk=fcc">Nepal - English</option><option data-localecode="nl-nl" value="http://www.ibm.com/nl-nl/?lnk=fcc">Netherlands - Dutch</option><option data-localecode="en-nl" value="http://www.ibm.com/nl-en/?lnk=fcc">Netherlands - English</option><option data-localecode="en-nz" value="http://www.ibm.com/nz-en/?lnk=fcc">New Zealand - English</option><option data-localecode="fr-ne" value="http://www.ibm.com/ne-fr/?lnk=fcc">Niger - French</option><option data-localecode="en-ng" value="http://www.ibm.com/ng-en/?lnk=fcc">Nigeria - English</option><option data-localecode="en-no" value="http://www.ibm.com/no-en/?lnk=fcc">Norway - English</option><option data-localecode="no-no" value="http://www.ibm.com/no-no/?lnk=fcc">Norway - Norwegian</option><option data-localecode="en-om" value="http://www.ibm.com/om-en/?lnk=fcc">Oman - English</option><option data-localecode="en-pk" value="http://www.ibm.com/pk-en/?lnk=fcc">Pakistan - English</option><option data-localecode="es-py" value="http://www.ibm.com/py-es/?lnk=fcc">Paraguay - Spanish</option><option data-localecode="es-pe" value="http://www.ibm.com/pe-es/?lnk=fcc">Peru - Spanish</option><option data-localecode="en-ph" value="http://www.ibm.com/ph-en/?lnk=fcc">Philippines - English</option><option data-localecode="pl-pl" value="http://www.ibm.com/pl-pl/?lnk=fcc">Poland - Polish</option><option data-localecode="en-pt" value="http://www.ibm.com/pt-en/?lnk=fcc">Portugal - English</option><option data-localecode="pt-pt" value="http://www.ibm.com/pt-pt/?lnk=fcc">Portugal - Portuguese</option><option data-localecode="en-qa" value="http://www.ibm.com/qa-en/?lnk=fcc">Qatar - English</option><option data-localecode="en-ro" value="http://www.ibm.com/ro-en/?lnk=fcc">Romania - English</option><option data-localecode="ro-ro" value="http://www.ibm.com/ro-ro/?lnk=fcc">Romania - Romanian</option><option data-localecode="ru-ru" value="http://www.ibm.com/ru-ru/?lnk=fcc">Russian Federation - Russian</option><option data-localecode="en-kn" value="http://www.ibm.com/kn-en/?lnk=fcc">Saint Kitts and Nevis - English</option><option data-localecode="en-lc" value="http://www.ibm.com/lc-en/?lnk=fcc">Saint Lucia - English</option><option data-localecode="en-vc" value="http://www.ibm.com/vc-en/?lnk=fcc">Saint Vincent and the Grenadines - English</option><option data-localecode="ar-sa" value="http://www.ibm.com/sa-ar/?lnk=fcc">Saudi Arabia - Arabic</option><option data-localecode="en-sa" value="http://www.ibm.com/sa-en/?lnk=fcc">Saudi Arabia - English</option><option data-localecode="fr-sn" value="http://www.ibm.com/sn-fr/?lnk=fcc">Senegal - French</option><option data-localecode="en-rs" value="http://www.ibm.com/rs-en/?lnk=fcc">Serbia - English</option><option data-localecode="sr-rs" value="http://www.ibm.com/rs-sr/?lnk=fcc">Serbia - Serbian</option><option data-localecode="fr-sc" value="http://www.ibm.com/sc-fr/?lnk=fcc">Seychelles - French</option><option data-localecode="en-sl" value="http://www.ibm.com/sl-en/?lnk=fcc">Sierra Leone - English</option><option data-localecode="en-sg" value="http://www.ibm.com/sg-en/?lnk=fcc">Singapore - English</option><option data-localecode="en-sk" value="http://www.ibm.com/sk-en/?lnk=fcc">Slovakia - English</option><option data-localecode="sk-sk" value="http://www.ibm.com/sk-sk/?lnk=fcc">Slovakia - Slovak</option><option data-localecode="en-si" value="http://www.ibm.com/si-en/?lnk=fcc">Slovenia - English</option><option data-localecode="sl-si" value="http://www.ibm.com/si-sl/?lnk=fcc">Slovenia - Slovenian</option><option data-localecode="en-za" value="http://www.ibm.com/za-en/?lnk=fcc">South Africa - English</option><option data-localecode="es-es" value="http://www.ibm.com/es-es/?lnk=fcc">Spain - Spanish</option><option data-localecode="en-lk" value="http://www.ibm.com/lk-en/?lnk=fcc">Sri Lanka - English</option><option data-localecode="en-sr" value="http://www.ibm.com/sr-en/?lnk=fcc">Suriname - English</option><option data-localecode="en-se" value="http://www.ibm.com/se-en/?lnk=fcc">Sweden - English</option><option data-localecode="sv-se" value="http://www.ibm.com/se-sv/?lnk=fcc">Sweden - Swedish</option><option data-localecode="fr-ch" value="http://www.ibm.com/ch-fr/?lnk=fcc">Switzerland - French</option><option data-localecode="de-ch" value="http://www.ibm.com/ch-de/?lnk=fcc">Switzerland - German</option><option data-localecode="zh-tw" value="http://www.ibm.com/tw-zh/?lnk=fcc">Taiwan - Chinese (Traditional)</option><option data-localecode="en-tz" value="http://www.ibm.com/tz-en/?lnk=fcc">Tanzania, United Republic of - English</option><option data-localecode="en-th" value="http://www.ibm.com/th-en/?lnk=fcc">Thailand - English</option><option data-localecode="en-tt" value="http://www.ibm.com/tt-en/?lnk=fcc">Trinidad and Tobago - English</option><option data-localecode="fr-tn" value="http://www.ibm.com/tn-fr/?lnk=fcc">Tunisia - French</option><option data-localecode="tr-tr" value="http://www.ibm.com/tr-tr/?lnk=fcc">Turkey - Turkish</option><option data-localecode="en-tc" value="http://www.ibm.com/tc-en/?lnk=fcc">Turks and Caicos Islands - English</option><option data-localecode="en-ug" value="http://www.ibm.com/ug-en/?lnk=fcc">Uganda - English</option><option data-localecode="en-ua" value="http://www.ibm.com/ua-en/?lnk=fcc">Ukraine - English</option><option data-localecode="uk-ua" value="http://www.ibm.com/ua-uk/?lnk=fcc">Ukraine - Ukrainian</option><option data-localecode="ar-ae" value="http://www.ibm.com/ae-ar/?lnk=fcc">United Arab Emirates - Arabic</option><option data-localecode="en-ae" value="http://www.ibm.com/ae-en/?lnk=fcc">United Arab Emirates - English</option><option data-localecode="en-uk" value="http://www.ibm.com/uk-en/?lnk=fcc">United Kingdom - English</option><option data-localecode="en-us" value="http://www.ibm.com/us-en/?lnk=fcc">United States - English</option><option data-localecode="es-uy" value="http://www.ibm.com/uy-es/?lnk=fcc">Uruguay - Spanish</option><option data-localecode="en-uz" value="http://www.ibm.com/uz-en/?lnk=fcc">Uzbekistan - English</option><option data-localecode="uz-uz" value="http://www.ibm.com/uz-uz/?lnk=fcc">Uzbekistan - Uzbek</option><option data-localecode="es-ve" value="http://www.ibm.com/ve-es/?lnk=fcc">Venezuela - Spanish</option><option data-localecode="en-vn" value="http://www.ibm.com/vn-en/?lnk=fcc">Vietnam - English</option><option data-localecode="vi-vn" value="http://www.ibm.com/vn-vi/?lnk=fcc">Vietnam - Vietnamese</option><option data-localecode="en-vg" value="http://www.ibm.com/vg-en/?lnk=fcc">Virgin Islands, British - English</option><option data-localecode="en-ye" value="http://www.ibm.com/ye-en/?lnk=fcc">Yemen - English</option><option data-localecode="en-zm" value="http://www.ibm.com/zm-en/?lnk=fcc">Zambia - English</option><option data-localecode="en-zw" value="http://www.ibm.com/zw-en/?lnk=fcc">Zimbabwe - English</option></optgroup></select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-kg95-container"><span class="select2-selection__rendered" id="select2-kg95-container" title="Brazil - Portuguese">Brazil - Portuguese</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div>
+            </div>
+        </div>
+    </div>        
+</footer> <!-- FOOTER_END -->
+
+<!-- END_IBM-TOP -->
+<div id="extwaiimpotscp" style="display:none" v="{c827" f="ZTJNNE1qYzJaVEF4TFRBeE5UQXROekZsWXkxaE9EY3dMV0V5TjJJME16Wmpaams0WTMwPQ==" q="5593cd92" c="15.22" i="22.16" u="23.41" s="19081419" w="false" m="BMe=" vn="adgr2"></div></div>
+
+<!-- SCRIPTS_INCLUDE_BEGIN -->
+<!-- Styles -->
+<link rel="stylesheet" type="text/css" href="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/jquery-comments.css">
+<link rel="stylesheet" href="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/font-awesome.css">
+
+<!-- Libraries -->
+<script type="text/javascript" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/jquery-comments.js"></script>
+<script type="text/javascript" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/moment-with-locales.js"></script>
+<script type="text/javascript" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/ContentComments.js"></script>
+<script type="text/javascript" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/ContentCommentsFormatter.js"></script>
+<script type="text/javascript" language="JavaScript">
+
+	IBMCore.common.module.masthead.subscribe("ready", "customjs", setupCommentsPlugin).runAsap(setupCommentsPlugin);
+
+	function setupCommentsPlugin(){
+		//debugger;
+			//alert(userLinks);
+			var commentsInitInfo = {
+				contentId : $("div[class=metavalue]:contains('ArticleID=')").text().split("=")[1],
+				siteId :  $("div[class=metavalue]:contains('SITE_ID=')").text().split("=")[1],
+				pluginDivId : '#dw-icomments-container',
+				notifyElementId : "#comment_notification",
+				loginMessageDivId : "#dw-article-cmts-login",
+				totalCommentsDivId : "#nCmts",
+						isIdea:false
+
+			};				
+								
+			ContentComments.Setup(commentsInitInfo);
+	}
+</script>
+
+<!-- SCRIPTS_INCLUDE_END -->
+
+
+
+<div id="ibm-overlay-backdrop"></div><div class="ibm-common-overlay ibm-overlay-alt-three" id="ibm-overlaywidget-N1009B" role="dialog" aria-describedby="ibm-overlaywidget-N1009B-content" aria-label="Overlay content" data-widget="overlay container" data-name=""><div class="ibm-overlay-heading-con"><p class="ibm-icononly"><a href="javascript:void(0);" class="ibm-close-link" role="button">Fechar</a></p></div><div id="ibm-overlaywidget-N1009B-content" class="content"><div class="ibm-widget-processed" data-widget="overlay" id="N1009B"><img alt="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img_architecture.png" width="1079"></div></div></div><div class="ibm-common-overlay ibm-overlay-alt-three" id="ibm-overlaywidget-N100D8" role="dialog" aria-describedby="ibm-overlaywidget-N100D8-content" aria-label="Overlay content" data-widget="overlay container" data-name=""><div class="ibm-overlay-heading-con"><p class="ibm-icononly"><a href="javascript:void(0);" class="ibm-close-link" role="button">Fechar</a></p></div><div id="ibm-overlaywidget-N100D8-content" class="content"><div class="ibm-widget-processed" data-widget="overlay" id="N100D8"><img alt="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img001.png" width="1015"></div></div></div><div class="ibm-common-overlay ibm-overlay-alt-three" id="ibm-overlaywidget-N10133" role="dialog" aria-describedby="ibm-overlaywidget-N10133-content" aria-label="Overlay content" data-widget="overlay container" data-name=""><div class="ibm-overlay-heading-con"><p class="ibm-icononly"><a href="javascript:void(0);" class="ibm-close-link" role="button">Fechar</a></p></div><div id="ibm-overlaywidget-N10133-content" class="content"><div class="ibm-widget-processed" data-widget="overlay" id="N10133"><img alt="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img002.png" width="615"></div></div></div><div class="ibm-common-overlay ibm-overlay-alt-three" id="ibm-overlaywidget-N101EF" role="dialog" aria-describedby="ibm-overlaywidget-N101EF-content" aria-label="Overlay content" data-widget="overlay container" data-name=""><div class="ibm-overlay-heading-con"><p class="ibm-icononly"><a href="javascript:void(0);" class="ibm-close-link" role="button">Fechar</a></p></div><div id="ibm-overlaywidget-N101EF-content" class="content"><div class="ibm-widget-processed" data-widget="overlay" id="N101EF"><img alt="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img008.png" width="810"></div></div></div><div class="ibm-common-overlay ibm-overlay-alt-three" id="ibm-overlaywidget-N101FC" role="dialog" aria-describedby="ibm-overlaywidget-N101FC-content" aria-label="Overlay content" data-widget="overlay container" data-name=""><div class="ibm-overlay-heading-con"><p class="ibm-icononly"><a href="javascript:void(0);" class="ibm-close-link" role="button">Fechar</a></p></div><div id="ibm-overlaywidget-N101FC-content" class="content"><div class="ibm-widget-processed" data-widget="overlay" id="N101FC"><img alt="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img009.png" width="973"></div></div></div><div class="ibm-common-overlay ibm-overlay-alt-three" id="ibm-overlaywidget-N10205" role="dialog" aria-describedby="ibm-overlaywidget-N10205-content" aria-label="Overlay content" data-widget="overlay container" data-name=""><div class="ibm-overlay-heading-con"><p class="ibm-icononly"><a href="javascript:void(0);" class="ibm-close-link" role="button">Fechar</a></p></div><div id="ibm-overlaywidget-N10205-content" class="content"><div class="ibm-widget-processed" data-widget="overlay" id="N10205"><img alt="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img010.png" width="541"></div></div></div><div class="ibm-common-overlay ibm-overlay-alt-three" id="ibm-overlaywidget-N10217" role="dialog" aria-describedby="ibm-overlaywidget-N10217-content" aria-label="Overlay content" data-widget="overlay container" data-name=""><div class="ibm-overlay-heading-con"><p class="ibm-icononly"><a href="javascript:void(0);" class="ibm-close-link" role="button">Fechar</a></p></div><div id="ibm-overlaywidget-N10217-content" class="content"><div class="ibm-widget-processed" data-widget="overlay" id="N10217"><img alt="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img011.png" width="408"></div></div></div><div class="ibm-common-overlay ibm-overlay-alt-three" id="ibm-overlaywidget-N10245" role="dialog" aria-describedby="ibm-overlaywidget-N10245-content" aria-label="Overlay content" data-widget="overlay container" data-name=""><div class="ibm-overlay-heading-con"><p class="ibm-icononly"><a href="javascript:void(0);" class="ibm-close-link" role="button">Fechar</a></p></div><div id="ibm-overlaywidget-N10245-content" class="content"><div class="ibm-widget-processed" data-widget="overlay" id="N10245"><img alt="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img012.png" width="1041"></div></div></div><div class="ibm-common-overlay ibm-overlay-alt-three" id="ibm-overlaywidget-N102CC" role="dialog" aria-describedby="ibm-overlaywidget-N102CC-content" aria-label="Overlay content" data-widget="overlay container" data-name=""><div class="ibm-overlay-heading-con"><p class="ibm-icononly"><a href="javascript:void(0);" class="ibm-close-link" role="button">Fechar</a></p></div><div id="ibm-overlaywidget-N102CC-content" class="content"><div class="ibm-widget-processed" data-widget="overlay" id="N102CC"><img alt="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img013.png" width="396"></div></div></div><div class="ibm-common-overlay ibm-overlay-alt-three" id="ibm-overlaywidget-N102EA" role="dialog" aria-describedby="ibm-overlaywidget-N102EA-content" aria-label="Overlay content" data-widget="overlay container" data-name=""><div class="ibm-overlay-heading-con"><p class="ibm-icononly"><a href="javascript:void(0);" class="ibm-close-link" role="button">Fechar</a></p></div><div id="ibm-overlaywidget-N102EA-content" class="content"><div class="ibm-widget-processed" data-widget="overlay" id="N102EA"><img alt="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img014.png" width="323"></div></div></div><div class="ibm-common-overlay ibm-overlay-alt-three" id="ibm-overlaywidget-N102FE" role="dialog" aria-describedby="ibm-overlaywidget-N102FE-content" aria-label="Overlay content" data-widget="overlay container" data-name=""><div class="ibm-overlay-heading-con"><p class="ibm-icononly"><a href="javascript:void(0);" class="ibm-close-link" role="button">Fechar</a></p></div><div id="ibm-overlaywidget-N102FE-content" class="content"><div class="ibm-widget-processed" data-widget="overlay" id="N102FE"><img alt="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img015.png" width="794"></div></div></div><div class="ibm-common-overlay ibm-overlay-alt-three" id="ibm-overlaywidget-N10334" role="dialog" aria-describedby="ibm-overlaywidget-N10334-content" aria-label="Overlay content" data-widget="overlay container" data-name=""><div class="ibm-overlay-heading-con"><p class="ibm-icononly"><a href="javascript:void(0);" class="ibm-close-link" role="button">Fechar</a></p></div><div id="ibm-overlaywidget-N10334-content" class="content"><div class="ibm-widget-processed" data-widget="overlay" id="N10334"><img alt="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img016.png" width="388"></div></div></div><div class="ibm-common-overlay ibm-overlay-alt-three" id="ibm-overlaywidget-N1034E" role="dialog" aria-describedby="ibm-overlaywidget-N1034E-content" aria-label="Overlay content" data-widget="overlay container" data-name=""><div class="ibm-overlay-heading-con"><p class="ibm-icononly"><a href="javascript:void(0);" class="ibm-close-link" role="button">Fechar</a></p></div><div id="ibm-overlaywidget-N1034E-content" class="content"><div class="ibm-widget-processed" data-widget="overlay" id="N1034E"><img alt="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img017.png" width="792"></div></div></div><div class="ibm-common-overlay ibm-overlay-alt-three" id="ibm-overlaywidget-N103BF" role="dialog" aria-describedby="ibm-overlaywidget-N103BF-content" aria-label="Overlay content" data-widget="overlay container" data-name=""><div class="ibm-overlay-heading-con"><p class="ibm-icononly"><a href="javascript:void(0);" class="ibm-close-link" role="button">Fechar</a></p></div><div id="ibm-overlaywidget-N103BF-content" class="content"><div class="ibm-widget-processed" data-widget="overlay" id="N103BF"><img alt="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img018.png" width="1075"></div></div></div><div class="ibm-common-overlay ibm-overlay-alt-three" id="ibm-overlaywidget-N10469" role="dialog" aria-describedby="ibm-overlaywidget-N10469-content" aria-label="Overlay content" data-widget="overlay container" data-name=""><div class="ibm-overlay-heading-con"><p class="ibm-icononly"><a href="javascript:void(0);" class="ibm-close-link" role="button">Fechar</a></p></div><div id="ibm-overlaywidget-N10469-content" class="content"><div class="ibm-widget-processed" data-widget="overlay" id="N10469"><img alt="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/img023.png" width="898"></div></div></div><div id="teconsent" class="truste_cookie_prefs" style="position: fixed; display: none; height: 40px; background-color: rgb(255, 255, 255); z-index: 2147483647; bottom: 0px; right: 0px; margin: 0px; padding: 0px 16px; line-height: 40px; vertical-align: middle; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 3px;" consent="0,1,2"><script type="text/javascript" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/notice.js" id="truste_0.23632245032659105"></script><script async="async" type="text/javascript" crossorigin="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/v1.7-2"></script><a id="icon-id010886281298254907" tabindex="0" role="button" style="cursor: pointer; font-family: ibm-plex-sans; font-size: 12pt; color: #3d3d3d; text-decoration: none" lang="pt">Preferências de cookies</a></div><div id="ibm-mobilemenu-screen"></div><div id="survey-overlay-backdrop" style="opacity: 0.5;background: #111;bottom: 0;left: 0;position: fixed;right: 0; top: 0; z-index: 900; display:none"></div><iframe style="display: none;" name="trustarc_notice" id="trustarcNoticeFrame" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/get.html"></iframe><iframe id="LOTCCFrame_1566416340991" src="https://bcp.crwdcntrl.net/5/c=10026/rand=610514497/pv=y/tp=IBMX/seg=IBMID%3ANo/seg=%23OpR%2383586%23digitalData%20%3A%20user%20%3A%20userInfo%20%3A%20company_name%20%3A%20universidade%20de%20s%C3%A3o%20paulo/seg=%23OpR%2383587%23digitalData%20%3A%20user%20%3A%20userInfo%20%3A%20country%20%3A%20br/seg=%23OpR%2383588%23digitalData%20%3A%20user%20%3A%20userInfo%20%3A%20industry%20%3A%20education/seg=%23OpR%2383591%23digitalData%20%3A%20user%20%3A%20userInfo%20%3A%20forbes_2000%20%3A%20false/seg=%23OpR%2383592%23digitalData%20%3A%20user%20%3A%20userInfo%20%3A%20fortune_1000%20%3A%20false/seg=%23OpR%2383593%23digitalData%20%3A%20user%20%3A%20userInfo%20%3A%20registry_country_code%20%3A%20br/seg=%23OpR%2383594%23digitalData%20%3A%20user%20%3A%20userInfo%20%3A%20company_name%20%3A%20universidade%20de%20s%C3%A3o%20paulo/tpid=30ba9b1f-cee6-4042-bcf3-55350254987d/int=%23OpR%2377304%23digitalData%20%3A%20siteID%20%3A%20DEVWRKS/int=%23OpR%2378616%23Site%20Visitor%20%3A%20IBM.com/int=%23OpR%2380062%23IBM%20-%20All%20URL%20Visitors/int=%23OpR%2384557%23digitalData%20%3A%20cm_mmc_vendor%20%3A%20OSearch_Google/dem=%23OpR%2377294%23digitalData%20%3A%20isIBMer%20%3A%200/dem=%23OpR%2377836%23digitalData%20%3A%20language%20%3A%20pt-BR/genp=%23OpR%2377458%23digitalData%20%3A%20gbt10%20%3A%20BX800/genp=%23OpR%2377460%23digitalData%20%3A%20gbt17%20%3A%2017INT/genp=%23OpR%2377462%23digitalData%20%3A%20gbt20%20%3A%20BSK00/ug=%23OpR%2378009%23https%3A%2F%2Fwww.ibm.com%2Fdeveloperworks%2Fbr%2Flibrary%2Fiot-smartphone-sensor-actuator-bluemix-apps-trs%2Findex.html/ug=%23OpR%2381952%23ibm.com%2Fdeveloperworks%2Fbr%2Flibrary%2Fiot-smartphone-sensor-actuator-bluemix-apps-trs%2Findex.html/dmn=%23OpR%2386492%23digitalData%20%3A%20referrerID%20%3A%20www.google.com/dmn=%23OpR%2386494%23digitalData%20%3A%20pageID%20%3A%20www.ibm.com%2Fdeveloperworks%2Fbr%2Flibrary%2Fiot-smartphone-sensor-actuator-bluemix-apps-trs/rt=ifr" title="empty" tabindex="-1" role="presentation" aria-hidden="true" style="border: 0px none; width: 0px; height: 0px; display: block;"></iframe><script async="" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/js_002.js" id="mm_pp_background"></script><iframe style="display: none !important; width: 1px !important; height: 1px !important; opacity: 0 !important; pointer-events: none !important;" name="_hjRemoteVarsFrame" title="_hjRemoteVarsFrame" id="_hjRemoteVarsFrame" src="Transforme%20seu%20smartphone%20em%20um%20sensor%20e%20em%20um%20atuador_arquivos/box-90f3a29ef7448451db5af955688970d7.html"></iframe></body></html>
